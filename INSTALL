@@ -1,0 +1,39 @@
+*************************************
+* Enviroment Setup
+*************************************
+- Install Microsoft Visual Studio 2012 with latest updates
+   http://www.microsoft.com/en-us/download/details.aspx?id=34673
+- Install latest Android SDK (Windows version)
+   http://www.cnblogs.com/bjzhanghao/archive/2012/11/14/android-platform-sdk-download-mirror.html
+- Install JDK 1.7
+   http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+   Install to C:\JDK
+- Install ANT
+   http://ant.apache.org/bindownload.cgi?Preferred=http%3A%2F%2Fmirrors.cnnic.cn%2Fapache%2F
+- Install latest Android NDK
+   https://developer.android.com/tools/sdk/ndk/index.html#Installing
+- Set environment variables
+   JAVA_HOME=<JDK install dir>
+   ANT_HOME=<ant install dir>
+   ANDROID_SDK=<android sdk dir>
+   add <ant install dir>\bin;<android ndk dir>\;<android sdk dir>\platform-tools\ to PATH
+
+*************************************
+* Build
+*************************************
+
+IMPORTANT!!! First try to build win32 to see if everything is running OK!
+
+- Win32 
+* Run msvc2012
+* Open Paper3D/examples/background/application/configs/msvc2012/Background.sln in msvc2012
+
+- Android
+* Run cmd.exe in win32
+* Enter Tech/configs/android
+* Enter build.bat debug 
+* Enter Paper3D/configs/android
+* Enter build.bat debug 
+* Enter Paper3D/examples/background/application/configs/android
+* Enter build.bat debug and it will generate background-debug.apk in ..\..\bin\android
+

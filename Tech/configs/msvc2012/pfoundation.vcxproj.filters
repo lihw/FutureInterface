@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\src\foundation\debug\pabstractlogoutput.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\pabstractstream.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\parser\ini.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\archive\parchivefile.cpp">
+      <Filter>archive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\parray.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pvector2.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pvector3.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pvector4.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\debug\passert.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\pcolorrgba.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pbox.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglerror_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglframebuffer_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglrenderbuffer_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglshader_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglstate_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pgltexture_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglvertexbuffer_es20.cpp">
+      <Filter>opengl\es20</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\image\pimagepng.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\image\pimagetga.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\image\pimage.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\parser\pini.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\pinputstream.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\plist.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pline.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputconsole.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputdebug.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputfile.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pmathutility.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pmatrix3x3.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pmatrix4x4.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\memory\pmemorydebugger.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\memory\pmemoryfunction.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\memory\pnew.cpp">
+      <Filter>memory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\pmap.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\poutputstream.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pplane.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pquaternion.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\prandom.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\prbtree.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\pset.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\pstring.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\collection\pvariant.cpp">
+      <Filter>collection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32asset.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32crt.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32debugutility.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32dir.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32path.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32time.cpp">
+      <Filter>wrapper\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\pstreamasset.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\pstreamfile.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\stream\pstreammemory.cpp">
+      <Filter>stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\parser\pxmldocument.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\parser\pxmlelement.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\debug\plog.cpp">
+      <Filter>debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\pconststring.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\pabstractproperty.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertybool.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertycolor.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertyfloat.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertyint.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertynameindexmap.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertyprojection.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertystring.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertytransform.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertyvector3.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\property\ppropertyvector4.cpp">
+      <Filter>property</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\object\pentity.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\object\pobject.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\pclock.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\pscroller.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\pscrollersnap.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\utility\ptimeline.cpp">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\pmodule.cpp">
+      <Filter>modules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pabstractgesture.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturefling.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturelongpress.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturemanager.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepan.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepinch.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturetap.cpp">
+      <Filter>modules\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\event\pevent.cpp">
+      <Filter>modules\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\event\peventmanager.cpp">
+      <Filter>modules\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\event\peventparameters.cpp">
+      <Filter>modules\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\event\peventtype.cpp">
+      <Filter>modules\event</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\timer\ptimer.cpp">
+      <Filter>modules\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\timer\ptimermanager.cpp">
+      <Filter>modules\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\runtime\pactivity.cpp">
+      <Filter>runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\runtime\pcontext.cpp">
+      <Filter>runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\runtime\pcontextproperties.cpp">
+      <Filter>runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\runtime\pdevice.cpp">
+      <Filter>runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\runtime\pinput.cpp">
+      <Filter>runtime</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\pinterpolatedvalue.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\math\parcball.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\foundation\global\pconfigs.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\global\pdefines.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\global\pdllexport.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\global\pglobalfunctions.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\global\pplatform.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\global\ptypes.h">
+      <Filter>global</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\pabstractlogoutput.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\stream\pabstractstream.h">
+      <Filter>stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\parser\ini_private.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\archive\parchivefile.h">
+      <Filter>archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\parray.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pvector2.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pvector3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pvector4.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\passert.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\pcolorrgba.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pbox.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglframebuffer.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglrenderbuffer.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglshader.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglstate.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pgltexture.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglvertexbuffer.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\image\pimagepng_private.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\image\pimagetga_private.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\image\pimage.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\parser\pini.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\opengl\pglerror.h">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\stream\pinputstream.h">
+      <Filter>stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\plist.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pline.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputconsole.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputdebug.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputfile.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pmathutility.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pmatrix3x3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pmatrix4x4.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\memory\pmemorydebugger.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\memory\pmemoryfunction.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\memory\pnew.h">
+      <Filter>memory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\pmap.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\stream\poutputstream.h">
+      <Filter>stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pplane.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pquaternion.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\pqueue.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\prandom.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\pcrt.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\pdir.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\ppath.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\prbtree.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\pset.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\pstring.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\collection\pvariant.h">
+      <Filter>collection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\stream\pstreamobject_private.h">
+      <Filter>stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\parser\pxmldocument.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\parser\pxmlelement.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\parser\pxmlstruct_private.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\pdebugutility.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\debug\plog.h">
+      <Filter>debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\passet.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\wrapper\ptime.h">
+      <Filter>wrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\pconststring.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\pabstractproperty.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertybool.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertycolor.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertyfloat.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertyint.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertynameindexmap.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertyprojection.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertystring.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertytransform.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertyvector3.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\property\ppropertyvector4.h">
+      <Filter>property</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\object\pentity.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\object\pobject.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\pclock.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\pscroller.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\pscrollersnap.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\utility\ptimeline.h">
+      <Filter>utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\pmodule.h">
+      <Filter>modules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\gesture\pgesturemanager.h">
+      <Filter>modules\gesture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\gesture\pgesture_private.h">
+      <Filter>modules\gesture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\pevent.h">
+      <Filter>modules\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\peventmanager.h">
+      <Filter>modules\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\peventparameters.h">
+      <Filter>modules\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\peventtype.h">
+      <Filter>modules\event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\events\panimationevent.h">
+      <Filter>modules\event\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\events\pkeyevent.h">
+      <Filter>modules\event\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\events\ptimerevent.h">
+      <Filter>modules\event\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\event\events\ptouchevent.h">
+      <Filter>modules\event\events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\timer\ptimer.h">
+      <Filter>modules\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\timer\ptimermanager.h">
+      <Filter>modules\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pactivity.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pcontext.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pcontextproperties.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pdevice.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pinput.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\presourcemanager.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\runtime\pscene.h">
+      <Filter>runtime</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\pinterpolatedvalue.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\math\parcball.h">
+      <Filter>math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="stream">
+      <UniqueIdentifier>{a5cd8bf8-bcb7-4a44-a592-b441e60c5040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{e466f343-c1b1-4f5c-bfab-1b23c7bdf1f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="collection">
+      <UniqueIdentifier>{e4160e60-80b7-4aa4-be66-8366464bedbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{04a6146e-7897-4378-8188-bc326d417ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="archive">
+      <UniqueIdentifier>{53522c01-388e-4944-b577-0f291f386854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="image">
+      <UniqueIdentifier>{331fd398-2a3e-4f69-85b0-0d0470212af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="parser">
+      <UniqueIdentifier>{dec87d80-3891-48da-950a-ebf1a5c2ce15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="debug">
+      <UniqueIdentifier>{514baf9b-18af-47eb-a479-c3f7dc24d103}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="memory">
+      <UniqueIdentifier>{2cdf7f30-c41f-4ac4-9153-dfc2526ace7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl">
+      <UniqueIdentifier>{3e1f98bb-6d9e-4545-a48d-2bffa7a683ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl\es20">
+      <UniqueIdentifier>{c4baa27b-1cdb-452e-b32a-3febdb95e017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrapper">
+      <UniqueIdentifier>{18bb9dcf-c0ae-49b9-b9ef-eb187e7ade54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrapper\win32">
+      <UniqueIdentifier>{0c384090-af60-4cb3-a8d8-59465d24a540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="global">
+      <UniqueIdentifier>{0a422d47-843d-4e9e-86ad-a99ae2801167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{b993ea90-238f-4c14-bee4-6f0af39a0d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="property">
+      <UniqueIdentifier>{e7210c6e-261d-4ef3-bd5d-fe557afdfda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules">
+      <UniqueIdentifier>{0b9e174d-0d89-4bd3-9b2e-f3591b332384}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\gesture">
+      <UniqueIdentifier>{abc96774-bc1b-4b7a-96e9-00d1566a4813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\event">
+      <UniqueIdentifier>{f8abc96b-a0a2-4bef-90ca-dfd33d2a0aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\event\events">
+      <UniqueIdentifier>{5b406cb1-61da-4e46-b756-6ef4565b6ebb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\timer">
+      <UniqueIdentifier>{8c163953-57b9-476a-9c1c-66433237b049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="runtime">
+      <UniqueIdentifier>{7d4cae6f-713c-4097-a71b-800e5be7204d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

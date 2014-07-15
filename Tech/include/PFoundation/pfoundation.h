@@ -1,0 +1,20 @@
+#ifndef PFOUNDATION_LAYER_H
+#define PFOUNDATION_LAYER_H
+#include "parchive_module.h"
+#include "pcollection_module.h"
+#include "pdebug_module.h"
+#include "penvironment_module.h"
+#include "pglobal.h"
+#include "pimage_module.h"
+#include "pmath_module.h"
+#include "pmemory_module.h"
+#include "pmodules_module.h"
+#include "pobject_module.h"
+#include "popengl_module.h"
+#include "pparser_module.h"
+#include "pproperty_module.h"
+#include "pruntime_module.h"
+#include "pstream_module.h"
+#include "putility_module.h"
+#include "pwrapper_module.h"
+#endif

@@ -1,0 +1,1 @@
+#include "../../src/foundation/property/ppropertyvector3.h"

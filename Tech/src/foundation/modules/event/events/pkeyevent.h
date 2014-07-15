@@ -1,0 +1,19 @@
+// pkeyevent.h
+// The keyboard event
+//
+// Copyright 2012 - 2014 by Future Interface. 
+// This software is licensed under the terms of the MIT license.
+//
+// Hongwei Li lihw81@gmail.com
+//
+// 
+
+P_EVENTPARAMETER__KEY_SCANCODE      = 0,  // puint32
+P_EVENTPARAMETER__KEY_CHAR          = 1,  // pchar 
+P_EVENTPARAMETER__KEY_ALT_PRESSED   = 2,  // boolean
+P_EVENTPARAMETER__KEY_CTRL_PRESSED  = 3,  // boolean 
+P_EVENTPARAMETER__KEY_SHIFT_PRESSED = 4,  // boolean
+P_EVENTPARAMETER__KEY_PARAMETER_FIRST = P_EVENTPARAMETER__KEY_SCANCODE,
+P_EVENTPARAMETER__KEY_PARAMETER_LAST = P_EVENTPARAMETER__KEY_SHIFT_PRESSED,
+P_EVENTPARAMETER__KEY_PARAMETER_NUMBER = P_EVENTPARAMETER__KEY_PARAMETER_LAST - P_EVENTPARAMETER__KEY_PARAMETER_FIRST + 1,
+

@@ -1,0 +1,1 @@
+#include "../../src/foundation/debug/pabstractlogoutput.h"

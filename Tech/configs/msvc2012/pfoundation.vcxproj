@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{326F2E70-7DF2-41B3-93F5-5D5C574D6363}</ProjectGuid>
+    <RootNamespace>cpptest</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>pfoundation</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="tech.props" />
+    <Import Project="gles20.props" />
+    <Import Project="engine.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="tech.props" />
+    <Import Project="gles20.props" />
+    <Import Project="engine.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60315.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(EngineRoot)\lib\msvc2012\Debug\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(EngineRoot)\lib\msvc2012\Release\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(EngineRoot)/3rdparty/platforms/msvc2012/gles20/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\foundation\math\parcball.h" />
+    <ClInclude Include="..\..\src\foundation\math\pinterpolatedvalue.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\events\panimationevent.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\events\pkeyevent.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\events\ptimerevent.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\events\ptouchevent.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\pevent.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\peventmanager.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\peventparameters.h" />
+    <ClInclude Include="..\..\src\foundation\modules\event\peventtype.h" />
+    <ClInclude Include="..\..\src\foundation\modules\gesture\pgesturemanager.h" />
+    <ClInclude Include="..\..\src\foundation\modules\gesture\pgesture_private.h" />
+    <ClInclude Include="..\..\src\foundation\modules\pmodule.h" />
+    <ClInclude Include="..\..\src\foundation\modules\timer\ptimer.h" />
+    <ClInclude Include="..\..\src\foundation\modules\timer\ptimermanager.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pactivity.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pcontext.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pcontextproperties.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pdevice.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pinput.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\presourcemanager.h" />
+    <ClInclude Include="..\..\src\foundation\runtime\pscene.h" />
+    <ClInclude Include="..\..\src\foundation\archive\parchivefile.h" />
+    <ClInclude Include="..\..\src\foundation\collection\parray.h" />
+    <ClInclude Include="..\..\src\foundation\collection\plist.h" />
+    <ClInclude Include="..\..\src\foundation\collection\pmap.h" />
+    <ClInclude Include="..\..\src\foundation\collection\pqueue.h" />
+    <ClInclude Include="..\..\src\foundation\collection\prbtree.h" />
+    <ClInclude Include="..\..\src\foundation\collection\pset.h" />
+    <ClInclude Include="..\..\src\foundation\collection\pstring.h" />
+    <ClInclude Include="..\..\src\foundation\collection\pvariant.h" />
+    <ClInclude Include="..\..\src\foundation\image\pimage.h" />
+    <ClInclude Include="..\..\src\foundation\image\pimagepng_private.h" />
+    <ClInclude Include="..\..\src\foundation\image\pimagetga_private.h" />
+    <ClInclude Include="..\..\src\foundation\math\pbox.h" />
+    <ClInclude Include="..\..\src\foundation\math\pline.h" />
+    <ClInclude Include="..\..\src\foundation\math\pmathutility.h" />
+    <ClInclude Include="..\..\src\foundation\math\pmatrix3x3.h" />
+    <ClInclude Include="..\..\src\foundation\math\pmatrix4x4.h" />
+    <ClInclude Include="..\..\src\foundation\math\pplane.h" />
+    <ClInclude Include="..\..\src\foundation\math\pquaternion.h" />
+    <ClInclude Include="..\..\src\foundation\math\prandom.h" />
+    <ClInclude Include="..\..\src\foundation\math\pvector2.h" />
+    <ClInclude Include="..\..\src\foundation\math\pvector3.h" />
+    <ClInclude Include="..\..\src\foundation\math\pvector4.h" />
+    <ClInclude Include="..\..\src\foundation\object\pentity.h" />
+    <ClInclude Include="..\..\src\foundation\object\pobject.h" />
+    <ClInclude Include="..\..\src\foundation\parser\ini_private.h" />
+    <ClInclude Include="..\..\src\foundation\parser\pini.h" />
+    <ClInclude Include="..\..\src\foundation\parser\pxmldocument.h" />
+    <ClInclude Include="..\..\src\foundation\parser\pxmlelement.h" />
+    <ClInclude Include="..\..\src\foundation\parser\pxmlstruct_private.h" />
+    <ClInclude Include="..\..\src\foundation\property\pabstractproperty.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertybool.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertycolor.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertyfloat.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertyint.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertynameindexmap.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertyprojection.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertystring.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertytransform.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertyvector3.h" />
+    <ClInclude Include="..\..\src\foundation\property\ppropertyvector4.h" />
+    <ClInclude Include="..\..\src\foundation\utility\pclock.h" />
+    <ClInclude Include="..\..\src\foundation\utility\pcolorrgba.h" />
+    <ClInclude Include="..\..\src\foundation\stream\pabstractstream.h" />
+    <ClInclude Include="..\..\src\foundation\stream\pinputstream.h" />
+    <ClInclude Include="..\..\src\foundation\stream\poutputstream.h" />
+    <ClInclude Include="..\..\src\foundation\stream\pstreamobject_private.h" />
+    <ClInclude Include="..\..\src\foundation\utility\pconststring.h" />
+    <ClInclude Include="..\..\src\foundation\global\pconfigs.h" />
+    <ClInclude Include="..\..\src\foundation\global\pdefines.h" />
+    <ClInclude Include="..\..\src\foundation\global\pdllexport.h" />
+    <ClInclude Include="..\..\src\foundation\global\pglobalfunctions.h" />
+    <ClInclude Include="..\..\src\foundation\global\pplatform.h" />
+    <ClInclude Include="..\..\src\foundation\global\ptypes.h" />
+    <ClInclude Include="..\..\src\foundation\debug\pabstractlogoutput.h" />
+    <ClInclude Include="..\..\src\foundation\debug\passert.h" />
+    <ClInclude Include="..\..\src\foundation\debug\plog.h" />
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputconsole.h" />
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputdebug.h" />
+    <ClInclude Include="..\..\src\foundation\debug\plogoutputfile.h" />
+    <ClInclude Include="..\..\src\foundation\memory\pmemorydebugger.h" />
+    <ClInclude Include="..\..\src\foundation\memory\pmemoryfunction.h" />
+    <ClInclude Include="..\..\src\foundation\memory\pnew.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglerror.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglframebuffer.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglrenderbuffer.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglshader.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglstate.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pgltexture.h" />
+    <ClInclude Include="..\..\src\foundation\opengl\pglvertexbuffer.h" />
+    <ClInclude Include="..\..\src\foundation\utility\pscroller.h" />
+    <ClInclude Include="..\..\src\foundation\utility\pscrollersnap.h" />
+    <ClInclude Include="..\..\src\foundation\utility\ptimeline.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\passet.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\pcrt.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\pdebugutility.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\pdir.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\ppath.h" />
+    <ClInclude Include="..\..\src\foundation\wrapper\ptime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\foundation\math\parcball.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pinterpolatedvalue.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\event\pevent.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\event\peventmanager.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\event\peventparameters.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\event\peventtype.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pabstractgesture.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturefling.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturelongpress.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturemanager.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepan.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepinch.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturetap.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\pmodule.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\timer\ptimer.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\timer\ptimermanager.cpp" />
+    <ClCompile Include="..\..\src\foundation\runtime\pactivity.cpp" />
+    <ClCompile Include="..\..\src\foundation\runtime\pcontext.cpp" />
+    <ClCompile Include="..\..\src\foundation\runtime\pcontextproperties.cpp" />
+    <ClCompile Include="..\..\src\foundation\runtime\pdevice.cpp" />
+    <ClCompile Include="..\..\src\foundation\runtime\pinput.cpp" />
+    <ClCompile Include="..\..\src\foundation\archive\parchivefile.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\parray.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\plist.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\pmap.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\prbtree.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\pset.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\pstring.cpp" />
+    <ClCompile Include="..\..\src\foundation\collection\pvariant.cpp" />
+    <ClCompile Include="..\..\src\foundation\image\pimage.cpp" />
+    <ClCompile Include="..\..\src\foundation\image\pimagepng.cpp" />
+    <ClCompile Include="..\..\src\foundation\image\pimagetga.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pbox.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pline.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pmathutility.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pmatrix3x3.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pmatrix4x4.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pplane.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pquaternion.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\prandom.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pvector2.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pvector3.cpp" />
+    <ClCompile Include="..\..\src\foundation\math\pvector4.cpp" />
+    <ClCompile Include="..\..\src\foundation\object\pentity.cpp" />
+    <ClCompile Include="..\..\src\foundation\object\pobject.cpp" />
+    <ClCompile Include="..\..\src\foundation\parser\ini.cpp" />
+    <ClCompile Include="..\..\src\foundation\parser\pini.cpp" />
+    <ClCompile Include="..\..\src\foundation\parser\pxmldocument.cpp" />
+    <ClCompile Include="..\..\src\foundation\parser\pxmlelement.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\pabstractproperty.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertybool.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertycolor.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertyfloat.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertyint.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertynameindexmap.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertyprojection.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertystring.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertytransform.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertyvector3.cpp" />
+    <ClCompile Include="..\..\src\foundation\property\ppropertyvector4.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\pstreamasset.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\pclock.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\pcolorrgba.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\pabstractstream.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\pinputstream.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\poutputstream.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\pstreamfile.cpp" />
+    <ClCompile Include="..\..\src\foundation\stream\pstreammemory.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\pconststring.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\pabstractlogoutput.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\passert.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\plog.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputconsole.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputdebug.cpp" />
+    <ClCompile Include="..\..\src\foundation\debug\plogoutputfile.cpp" />
+    <ClCompile Include="..\..\src\foundation\memory\pmemorydebugger.cpp" />
+    <ClCompile Include="..\..\src\foundation\memory\pmemoryfunction.cpp" />
+    <ClCompile Include="..\..\src\foundation\memory\pnew.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglerror_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglframebuffer_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglrenderbuffer_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglshader_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglstate_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pgltexture_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\opengl\es20\pglvertexbuffer_es20.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\pscroller.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\pscrollersnap.cpp" />
+    <ClCompile Include="..\..\src\foundation\utility\ptimeline.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32asset.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32crt.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32debugutility.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32dir.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32path.cpp" />
+    <ClCompile Include="..\..\src\foundation\wrapper\win32\pwin32time.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
