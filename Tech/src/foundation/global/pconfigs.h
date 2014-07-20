@@ -59,9 +59,7 @@
 // #---------+-----------------+-----------+-------------+
 
 #if !defined P_ENABLE_LOGGING  // Enable the logging
-#  if defined P_DEBUG
-#    define P_ENABLE_LOGGING 1
-#  endif
+# define P_ENABLE_LOGGING 1
 #endif 
 
 // Ditto

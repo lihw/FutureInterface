@@ -91,7 +91,7 @@ enum PLogChannelEnum
     do { pLog(P_LOG_FATAL, channel, __FILE__, __LINE__, fmt, __VA_ARGS__); } while (0)
 #endif
 
-#if defined P_ENABLE_LOGGING
+#if P_ENABLE_LOGGING == 1
 # if defined P_GCC
 #  define PLOG_ERROR(fmt, ...) \
     do { pLog(P_LOG_ERROR, P_LOG_CHANNEL_DEFAULT, __FILE__, __LINE__, fmt, ##__VA_ARGS__); } while (0)
@@ -164,7 +164,7 @@ enum PLogChannelEnum
 #endif // P_ENABLE_LOGGING
 
 
-#if defined P_ENABLE_LOGGING
+#if P_ENABLE_LOGGING == 1
 
 // Output the log in the formatted way
 P_EXTERN void P_CCONV pLog(PLogVerbosityEnum verbosity, PLogChannelEnum channel, const pchar *file, puint32 line, const pchar *format, ...);

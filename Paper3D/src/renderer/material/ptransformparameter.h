@@ -29,8 +29,9 @@ public:
                       const PRenderLightQueue &lights); 
 
 private:
-    void uploadWorldMatrix(PRenderTransform *transform, PGlShader *shader);
-    void uploadCameraMatrix(PRenderTransform *transform, PGlShader *shader);
+    void uploadModelMatrix(PRenderTransform *transform, PGlShader *shader);
+    void uploadViewMatrix(PRenderTransform *transform, PGlShader *shader);
+    void uploadModelViewMatrix(PRenderTransform *transform, PGlShader *shader);
     void uploadProjectionMatrix(PRenderTransform *transform, PGlShader *shader);
     void uploadMVP(PRenderTransform *transform, PGlShader *shader);
     void uploadNormalMatrix(PRenderTransform *transform, PGlShader *shader);

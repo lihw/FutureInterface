@@ -36,6 +36,8 @@ pbool MyContext::onInitialized()
 	m_value = PNEW(PInterpolatedValue(0, 0, 9));
 	m_value->setRange(0.0f, 20.0f);
 
+    PLOG_INFO("Press 'F' to switch background fill mode.");
+
     return true;
 }
 
@@ -68,6 +70,8 @@ pbool MyContext::onKeyboard(PEvent *event)
 		case P_KEY_ESC:
             quit();
 			break;
+        case P_KEY_F:
+            m_scene->switchBackgroundFillMode();
 		}
 	}
 

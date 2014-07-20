@@ -22,14 +22,19 @@ PTransformParameter::PTransformParameter(const pchar *name, const pchar *uniform
         m_upload = &PTransformParameter::uploadMVP;
         m_uniformType = P_GLSHADERUNIFORM_FLOATMATRIX4X4;
     }
-    else if (m_name == "world")
+    else if (m_name == "mv")
     {
-        m_upload = &PTransformParameter::uploadWorldMatrix;
+        m_upload = &PTransformParameter::uploadModelViewMatrix;
         m_uniformType = P_GLSHADERUNIFORM_FLOATMATRIX4X4;
     }
-    else if (m_name == "camera")
+    else if (m_name == "model")
     {
-        m_upload = &PTransformParameter::uploadCameraMatrix;
+        m_upload = &PTransformParameter::uploadModelMatrix;
+        m_uniformType = P_GLSHADERUNIFORM_FLOATMATRIX4X4;
+    }
+    else if (m_name == "view")
+    {
+        m_upload = &PTransformParameter::uploadViewMatrix;
         m_uniformType = P_GLSHADERUNIFORM_FLOATMATRIX4X4;
     }
     else if (m_name == "normal")
@@ -63,14 +68,19 @@ void PTransformParameter::upload(PGlShader              *shader,
     (this->*m_upload)(transform, shader);
 }
     
-void PTransformParameter::uploadWorldMatrix(PRenderTransform *transform, PGlShader *shader)
+void PTransformParameter::uploadModelMatrix(PRenderTransform *transform, PGlShader *shader)
 {
-    shader->uniformMatrix4fv(m_uniformLocation, transform->worldMatrix().m_m, 1);
+    shader->uniformMatrix4fv(m_uniformLocation, transform->modelMatrix().m_m, 1);
 }
 
-void PTransformParameter::uploadCameraMatrix(PRenderTransform *transform, PGlShader *shader)
+void PTransformParameter::uploadViewMatrix(PRenderTransform *transform, PGlShader *shader)
 {
-    shader->uniformMatrix4fv(m_uniformLocation, transform->cameraMatrix().m_m, 1);
+    shader->uniformMatrix4fv(m_uniformLocation, transform->viewMatrix().m_m, 1);
+}
+
+void PTransformParameter::uploadModelViewMatrix(PRenderTransform *transform, PGlShader *shader)
+{
+    shader->uniformMatrix4fv(m_uniformLocation, transform->modelviewMatrix().m_m, 1);
 }
 
 void PTransformParameter::uploadNormalMatrix(PRenderTransform *transform, PGlShader *shader)
@@ -80,7 +90,7 @@ void PTransformParameter::uploadNormalMatrix(PRenderTransform *transform, PGlSha
 
 void PTransformParameter::uploadMVP(PRenderTransform *transform, PGlShader *shader)
 {
-    shader->uniformMatrix4fv(m_uniformLocation, transform->mvp().m_m, 1);
+    shader->uniformMatrix4fv(m_uniformLocation, transform->mvpMatrix().m_m, 1);
 }
 
 void PTransformParameter::uploadProjectionMatrix(PRenderTransform *transform, PGlShader *shader)

@@ -16,7 +16,7 @@
 #include <PFoundation/plogoutputconsole.h>
 #include <PFoundation/plogoutputdebug.h>
 
-#if defined P_ENABLE_LOGGING 
+#if P_ENABLE_LOGGING == 1
 
 static PAbstractLogOutput *g_logChannels[P_LOG_MAX_CHANNELS];
 

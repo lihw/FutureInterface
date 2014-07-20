@@ -47,9 +47,10 @@ MyScene::MyScene(PContext *context)
     PTexture *texture = resMgr->getTexture("bg.png");
     texture->setRepeatWrappingEnabled(true);
     m_background->setTexture(texture);
-    m_background->setTextureScaling((pfloat32)rect[2] / (pfloat32)rect[3], 1.0f);
 
     setBackgroundColor(pColorRGBA(1.0f, 1.0f, 1.0f, 0.0f));
+
+
 }
 
 MyScene::~MyScene()
@@ -73,4 +74,13 @@ void MyScene::rotate(pfloat32 offset)
 {
     m_backgroundMovement += offset;
     m_background->setTextureOffset(m_backgroundMovement, 0);
+}
+
+void MyScene::switchBackgroundFillMode()
+{
+    static puint32 mode = PBackground::FILL_DEFAULT;
+
+    mode = (mode + 1) % (PBackground::FILL_MODE_COUNT + 1);
+
+    m_background->setTextureFillMode((PBackground::FillModeEnum)mode);
 }

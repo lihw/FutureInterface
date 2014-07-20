@@ -16,6 +16,7 @@
 #include <Paper3D/pmaterial.h>
 #include <Paper3D/pmaterialparameter.h>
 #include <Paper3D/presourcemanager.h>
+#include <Paper3D/prenderstate.h>
 
 #include <PFoundation/pcontext.h>
 #include <PFoundation/pxmlelement.h>
@@ -71,10 +72,11 @@ PBackground::PBackground(const pchar *name, PScene *scene)
     setGeometry(PNEW(PGeometryPlane(resourceManager)));
     setMaterial(PNEW(PMaterial("internal/background.pmt", PBACKGROUND_PMT, false, resourceManager)));
 
-    m_textureInfo = pVector4(1, 1, 0, 0);
-    m_sizeInfo    = pVector4(1, 1, 0, 0);
-    m_layout      = (LAYOUT_CENTER | LAYOUT_MIDDLE);  
-    m_dirty       = true;
+    m_textureInfo  = pVector4(1, 1, 0, 0);
+    m_sizeInfo     = pVector4(1, 1, 0, 0);
+    m_layout       = (LAYOUT_CENTER | LAYOUT_MIDDLE);  
+    m_dirty        = true;
+    m_fillMode     = FILL_DEFAULT;
 }
 
 PBackground::~PBackground()
@@ -101,13 +103,14 @@ void PBackground::setTexture(PTexture *texture)
         if (m_texture != P_NULL)
         {
             m_texture->retain();
+            m_texture->setRepeatWrappingEnabled(true);
         }
 
         material()->parameter("texture") = texture;
     }
 }
     
-void PBackground::update()
+void PBackground::prepareRender(PRenderState *renderState)
 {
     if (m_texture == P_NULL)
     {
@@ -116,13 +119,70 @@ void PBackground::update()
 
     if (m_dirty)
     {
-        PVector4 texInfo = m_textureInfo;
-        pfloat32 w = (pfloat32)m_texture->width() / (pfloat32)m_texture->height();
-        texInfo[0] = m_textureInfo[0] / w;
+        switch ((m_layout & 0xf0))
+        {
+            case LAYOUT_LEFT:
+                m_sizeInfo[2] = m_sizeInfo[0] - 1.0f;;
+                break;
+            case LAYOUT_CENTER:
+                m_sizeInfo[2] = 0;;
+                break;
+            case LAYOUT_RIGHT:
+                m_sizeInfo[2] = 1.0f - m_sizeInfo[0];
+                break;
+            default:
+                PASSERT_NOTREACHABLE("Unknown background layout value.");
+                break;
+        }
 
-        texInfo[0] = 1.0f;
+        switch ((m_layout & 0x0f))
+        {
+            case LAYOUT_TOP:
+                m_sizeInfo[3] = 1.0f - m_sizeInfo[1];
+                break;
+            case LAYOUT_MIDDLE:
+                m_sizeInfo[3] = 0;
+                break;
+            case LAYOUT_BOTTOM:
+                m_sizeInfo[3] = m_sizeInfo[1] - 1.0f;
+                break;
+            default:
+                PASSERT_NOTREACHABLE("Unknown background layout value.");
+                break;
+        }
 
-	    material()->parameter("texinfo") = texInfo;
+        puint32 viewport[4];
+        renderState->renderStateObject()->getViewport(viewport);
+
+        pfloat32 width  = (pfloat32)viewport[2] * m_sizeInfo[0];
+        pfloat32 height = (pfloat32)viewport[3] * m_sizeInfo[1];
+
+        if (m_fillMode == FILL_STRETCHED_UNIFORM || m_fillMode == FILL_TILED)
+        {
+            m_textureInfo[0] = (pfloat32)viewport[2] / width;
+            m_textureInfo[1] = (pfloat32)viewport[3] / height;
+
+            if (m_fillMode == FILL_STRETCHED_UNIFORM)
+            {
+                if (m_textureInfo[0] < m_textureInfo[1])
+                {
+                    m_textureInfo[0] = m_textureInfo[0] / m_textureInfo[1];
+                    m_textureInfo[1] = 1.0f;
+                }
+                else
+                {
+                    m_textureInfo[1] = m_textureInfo[1] / m_textureInfo[0];
+                    m_textureInfo[0] = 1.0f;
+                }
+            }
+        }
+        else
+        {
+            m_textureInfo[0] = 1.0f;
+            m_textureInfo[1] = 1.0f;
+        }
+        
+	    material()->parameter("texinfo") = m_textureInfo;
         material()->parameter("sizeinfo") = m_sizeInfo;
 
         m_dirty = false;
@@ -137,10 +197,9 @@ void PBackground::setTextureOffset(pfloat32 x, pfloat32 y)
     m_dirty = true;
 }
 
-void PBackground::setTextureScaling(pfloat32 x, pfloat32 y)
+void PBackground::setTextureFillMode(PBackground::FillModeEnum fillMode)
 {
-	m_textureInfo[0] = x;
-	m_textureInfo[1] = y;
+    m_fillMode = fillMode;
 
     m_dirty = true;
 }
@@ -158,47 +217,14 @@ void PBackground::setSize(pfloat32 width, pfloat32 height)
 
 void PBackground::setLayout(puint32 layout)
 {
-    if (m_layout == layout)
+    if (m_layout != layout)
     {
-        return ;
-    }
+        m_layout = layout;
 
-    m_layout = layout;
-
-    switch ((layout & 0xf0))
-    {
-        case LAYOUT_LEFT:
-            m_sizeInfo[2] = 0;
-            break;
-        case LAYOUT_CENTER:
-            m_sizeInfo[2] = (1.0f - m_sizeInfo[0]) * 0.5f;
-            break;
-        case LAYOUT_RIGHT:
-            m_sizeInfo[2] = 1.0f - m_sizeInfo[0];
-            break;
-        default:
-            PASSERT_NOTREACHABLE("Unknown background layout value.");
-            break;
+        m_dirty = true;
     }
-    
-    switch ((layout & 0x0f))
-    {
-        case LAYOUT_TOP:
-            m_sizeInfo[3] = 1.0f - m_sizeInfo[1];
-            break;
-        case LAYOUT_MIDDLE:
-            m_sizeInfo[3] = (1.0f - m_sizeInfo[1]) * 0.5f;
-            break;
-        case LAYOUT_BOTTOM:
-            m_sizeInfo[3] = 0;
-            break;
-        default:
-            PASSERT_NOTREACHABLE("Unknown background layout value.");
-            break;
-    }
-
-    m_dirty = true;
 }
+
 
 pbool PBackground::unpack(const PXmlElement* xmlElement)
 {
@@ -227,18 +253,35 @@ pbool PBackground::unpack(const PXmlElement* xmlElement)
     const pchar *textureInfoValue = xmlElement->attribute("texinfo");
     if (textureInfoValue != P_NULL)
     {
-        pfloat32 sx, sy;
         pfloat32 x, y;
 
-        if ((p = pStringUnpackFloat(p, &sx)) != P_NULL &&
-            (p = pStringUnpackFloat(p, &sy)) != P_NULL &&
-            (p = pStringUnpackFloat(p, &x)) != P_NULL &&
+        if ((p = pStringUnpackFloat(p, &x)) != P_NULL &&
             (p = pStringUnpackFloat(p, &y)) != P_NULL)
         {
-	        m_textureInfo[0] = sx;
-            m_textureInfo[1] = sy;
 	        m_textureInfo[2] = x;
             m_textureInfo[3] = y;
+        }
+    }
+
+    const pchar *fillValue = xmlElement->attribute("fill");
+    if (fillValue != P_NULL)
+    {
+        if (pstrcmp(fillValue, "stretched") == 0)
+        {
+            m_fillMode = FILL_STRETCHED;
+        }
+        else if (pstrcmp(fillValue, "stretched_uniform") == 0)
+        {
+            m_fillMode = FILL_STRETCHED_UNIFORM;
+        }
+        else if (pstrcmp(fillValue, "tiled") == 0)
+        {
+            m_fillMode = FILL_STRETCHED_UNIFORM;
+        }
+        else
+        {
+            PASSERT_NOTREACHABLE("Unknown background texture fill mode");
+            return false;
         }
     }
 

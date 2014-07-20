@@ -27,7 +27,7 @@ public:
     PBackground(const pchar *name, PScene *scene);
     virtual ~PBackground();
 
-    enum PBackgroundLayoutEnum
+    enum LayoutEnum
     {
         LAYOUT_TOP     = 0x1,
         LAYOUT_MIDDLE  = 0x2,
@@ -40,6 +40,19 @@ public:
         LAYOUT_DEFAULT = (LAYOUT_MIDDLE | LAYOUT_CENTER),
     };
 
+    enum FillModeEnum
+    {
+        FILL_TILED,             // Tile the texture in the background 
+        FILL_STRETCHED,         // Stretched and don't keep the width/height ratio
+        FILL_STRETCHED_UNIFORM, // Stretched and keep the width/height ratio.
+
+        FILL_FIRST_MODE = FILL_TILED,
+        FILL_LAST_MODE = FILL_STRETCHED_UNIFORM,
+        FILL_MODE_COUNT = FILL_LAST_MODE - FILL_FIRST_MODE + 1,
+
+        FILL_DEFAULT = FILL_STRETCHED,
+    };
+
     // Set size w.r.t to the screen
     void setSize(pfloat32 width, pfloat32 height);
     // Set the layout in the screen
@@ -48,20 +61,21 @@ public:
     void setTexture(PTexture *texture);
     // Translate the texture
     void setTextureOffset(pfloat32 x, pfloat32 y);
-	// Set the scaling of the texture visible region.
-	void setTextureScaling(pfloat32 x, pfloat32 y);
+	// Set the fill mode. The default is stretched.
+	void setTextureFillMode(PBackground::FillModeEnum mode);
     
     virtual pbool unpack(const PXmlElement* xmlElement);
 
 protected:
-    virtual void update();
+    virtual void prepareRender(PRenderState *renderState);
     
 private:
-    PTexture    *m_texture;
-	PVector4     m_textureInfo;
-    PVector4     m_sizeInfo;
-    puint32      m_layout;
-    pbool        m_dirty; // Need to sync GPU and CPU
+    PTexture                *m_texture;
+	PVector4                 m_textureInfo;
+    PVector4                 m_sizeInfo;
+    puint32                  m_layout;
+    FillModeEnum             m_fillMode;  // Horizontal cropping and vertical cropping
+    pbool                    m_dirty;     // Need to sync GPU and CPU
 };
 
 

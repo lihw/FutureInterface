@@ -26,6 +26,8 @@ public:
 
     void rotate(pfloat32 offset);
 
+    void switchBackgroundFillMode();
+
 private:
     PDrawable *m_cube;
     PBackground *m_background;
