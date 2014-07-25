@@ -1,7 +1,8 @@
 LOCAL_PATH:= $(call my-dir)
 
-TECH_ROOT := ../../../../../../../Tech
-PAPER3D_ROOT := ../../../../../../../Paper3D
+
+TECH_ROOT := $(FIROOT)/Tech
+PAPER3D_ROOT := $(FIROOT)/Paper3D
 TECH_LIBRARY_PATH := $(TECH_ROOT)/lib/android
 PAPER3D_LIBRARY_PATH := $(PAPER3D_ROOT)/lib/android
 
@@ -102,10 +103,10 @@ LOCAL_CFLAGS := -O2 $(APP_DEFINES) $(CONF_FLAGS) -fexceptions -frtti
 
 APP_LIBRARY_INCLUDE_PATHS := \
 $(APP_PATH)/src \
-$(LOCAL_PATH)/$(TECH_ROOT)/include \
-$(LOCAL_PATH)/$(TECH_ROOT)/include/PPlatform \
-$(LOCAL_PATH)/$(TECH_ROOT)/include/PFoundation \
-$(LOCAL_PATH)/$(PAPER3D_ROOT)/include
+$(TECH_ROOT)/include \
+$(TECH_ROOT)/include/PPlatform \
+$(TECH_ROOT)/include/PFoundation \
+$(PAPER3D_ROOT)/include
 
 EXT_LIBRARY_INCLUDE_PATHS := \
 $(TECH_ROOT)/3rdparty/platforms/android/libpng/include/ \

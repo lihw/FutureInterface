@@ -33,27 +33,21 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="tech.props" />
-    <Import Project="gles20.props" />
-    <Import Project="engine.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="tech.props" />
-    <Import Project="gles20.props" />
-    <Import Project="engine.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>11.0.60315.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(EngineRoot)\lib\msvc2012\Debug\</OutDir>
+    <OutDir>$(FIROOT)\Tech\lib\msvc2012\Debug\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(EngineRoot)\lib\msvc2012\Release\</OutDir>
+    <OutDir>$(FIROOT)\Tech\lib\msvc2012\Release\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
@@ -67,6 +61,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
@@ -82,7 +77,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(EngineRoot)/3rdparty/platforms/msvc2012/gles20/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

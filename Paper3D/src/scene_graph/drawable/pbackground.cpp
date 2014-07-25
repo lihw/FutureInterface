@@ -301,37 +301,40 @@ pbool PBackground::unpack(const PXmlElement* xmlElement)
     const pchar *layoutValue = xmlElement->attribute("layout");
     pchar vLayout[16];
     pchar hLayout[16];
-    if ((p = pStringUnpackString(layoutValue, hLayout)) != P_NULL && 
-        (p = pStringUnpackString(layoutValue, vLayout)) != P_NULL)
+    if (layoutValue != P_NULL)
     {
-        puint32 layout = 0;
+        if ((p = pStringUnpackString(layoutValue, hLayout)) != P_NULL && 
+            (p = pStringUnpackString(layoutValue, vLayout)) != P_NULL)
+        {
+            puint32 layout = 0;
 
-        if (pstrcmp(vLayout, "top") == 0)
-        {
-            layout |= LAYOUT_TOP;
-        }
-        else if (pstrcmp(vLayout, "middle") == 0)
-        {
-            layout |= LAYOUT_MIDDLE;
-        }
-        else if (pstrcmp(vLayout, "bottom") == 0)
-        {
-            layout |= LAYOUT_BOTTOM;
-        }
-        else if (pstrcmp(vLayout, "left") == 0)
-        {
-            layout |= LAYOUT_LEFT;
-        }
-        else if (pstrcmp(vLayout, "center") == 0)
-        {
-            layout |= LAYOUT_CENTER;
-        }
-        else if (pstrcmp(vLayout, "right") == 0)
-        {
-            layout |= LAYOUT_RIGHT;
-        }
+            if (pstrcmp(vLayout, "top") == 0)
+            {
+                layout |= LAYOUT_TOP;
+            }
+            else if (pstrcmp(vLayout, "middle") == 0)
+            {
+                layout |= LAYOUT_MIDDLE;
+            }
+            else if (pstrcmp(vLayout, "bottom") == 0)
+            {
+                layout |= LAYOUT_BOTTOM;
+            }
+            else if (pstrcmp(vLayout, "left") == 0)
+            {
+                layout |= LAYOUT_LEFT;
+            }
+            else if (pstrcmp(vLayout, "center") == 0)
+            {
+                layout |= LAYOUT_CENTER;
+            }
+            else if (pstrcmp(vLayout, "right") == 0)
+            {
+                layout |= LAYOUT_RIGHT;
+            }
     
-        setLayout(layout);
+            setLayout(layout);
+        }
     }
 
     m_dirty = true;

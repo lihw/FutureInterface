@@ -23,7 +23,7 @@
 extern void pMain(int argc, char* argv[]);
 
 
-int main(int argc, char* argv[])
+int pwin32main(int argc, char* argv[])
 {
     // Enable memory leak checks and heap validation. 
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_CHECK_ALWAYS_DF | _CRTDBG_LEAK_CHECK_DF);

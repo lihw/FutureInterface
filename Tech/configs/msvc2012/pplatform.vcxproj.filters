@@ -15,6 +15,9 @@
     <ClCompile Include="..\..\src\platform\win32\pwin32window.cpp">
       <Filter>win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\platform\win32\main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\platform\win32\pwin32surface.h">

@@ -1,7 +1,8 @@
 // mycontext.h
-// Android live wallpaper powered by Future Interface Paper3D technology
+// "HelloPaper3D" example
 //
-// Copyright 2012 - 2024 Future Interface. All rights reserved.
+// Copyright 2012 - 2014 Future Interface. 
+// This software is licensed under the terms of the MIT license.
 //
 // Hongwei Li lihw81@gmail.com
 //

@@ -1,5 +1,5 @@
 // myscene.h
-// Paper3D example application
+// "Multipass" example.
 //
 // Copyright 2012 - 2014 Future Interface. 
 // This software is licensed under the terms of the MIT license.

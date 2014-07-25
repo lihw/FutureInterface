@@ -543,12 +543,9 @@ pbool pEglSurfaceInitialize_internal(EGLDisplay eglDisplay, HWND eglWindow,
     }
 
     // Create EGL context.
-#if defined P_OPENGL_ES20
     EGLint contextAttributes[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
     eglContext = eglCreateContext(eglDisplay, eglConfiguration, eglGetCurrentContext(), contextAttributes);
-#else 
-    eglContext = eglCreateContext(eglDisplay, eglConfiguration, eglGetCurrentContext(), P_NULL);
-#endif
+    
     if (!pEglErrorCheckError())
     {
         eglDestroySurface(eglDisplay, eglSurface);

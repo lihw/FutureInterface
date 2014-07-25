@@ -1,5 +1,5 @@
 // pmain.cpp
-// Paper3D example application
+// "Cubemap" example
 //
 // Copyright 2012 - 2024 Future Interface. 
 // This software is licensed under the terms of the MIT license.
@@ -41,6 +41,6 @@ void pMain(int argc, char* argv[])
     }
     else
     {
-        PLOG_ERROR("No running activity");
+        PLOG_ERROR("No running activity.");
     }
 }

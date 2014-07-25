@@ -1,7 +1,8 @@
 // mycontext.cpp
-// Paper3D example application
+// "Cubemap" example
 //
 // Copyright 2012 - 2024 Future Interface. All rights reserved.
+// This software is licensed under the terms of the MIT license.
 //
 // Hongwei Li lihw81@gmail.com
 //
