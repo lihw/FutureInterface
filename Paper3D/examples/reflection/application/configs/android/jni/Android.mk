@@ -121,6 +121,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_SRC_FILES := \
 $(TECH_ROOT)/src/platform/android/main.cpp \
 $(APP_PATH)/src/pmain.cpp \
+$(APP_PATH)/src/pmirror.cpp \
 $(APP_PATH)/src/mycontext.cpp \
 $(APP_PATH)/src/myscene.cpp 
 
