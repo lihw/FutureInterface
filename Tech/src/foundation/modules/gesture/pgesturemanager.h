@@ -23,6 +23,7 @@ public:
     virtual ~PGestureManager();
     
     virtual void update();
+    virtual void uninitialize();
     virtual pbool resume();
 
     void recognize(PEvent *event);

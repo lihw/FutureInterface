@@ -32,6 +32,15 @@ PGestureManager::PGestureManager(PContext *context)
 
 PGestureManager::~PGestureManager()
 {
+    PASSERT(m_gestures[P_GESTURE_TYPE_TAP] == P_NULL);
+    PASSERT(m_gestures[P_GESTURE_TYPE_LONGPRESS] == P_NULL);
+    PASSERT(m_gestures[P_GESTURE_TYPE_FLING] == P_NULL);
+    PASSERT(m_gestures[P_GESTURE_TYPE_PAN] == P_NULL);
+    PASSERT(m_gestures[P_GESTURE_TYPE_PINCH] == P_NULL);
+}
+
+void PGestureManager::uninitialize()
+{
     PDELETE(m_gestures[P_GESTURE_TYPE_TAP]);
     PDELETE(m_gestures[P_GESTURE_TYPE_LONGPRESS]);
     PDELETE(m_gestures[P_GESTURE_TYPE_FLING]);
