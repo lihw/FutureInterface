@@ -14,8 +14,11 @@
 class MyClient : public PNetworkClient
 {
 public:
-    MyClient(const pchar *address, PNetworkManager *networkManager);
+    MyClient(const pchar *address, puint16 port, pint32 timeout, PNetworkManager *networkManager);
     virtual ~MyClient();
+
+    virtual void onConnectFailed();
+    virtual void onConnected();
 };
 
 #endif //!MYCLIENT_H

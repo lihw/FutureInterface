@@ -12,13 +12,14 @@
 #include <PFoundation/pcontext.h>
 #include <PFoundation/pcontextproperties.h>
 
-class PNetworkNode;
+class MyServer;
+class MyClient;
 class MyScene;
 
 class MyContext : public PContext
 {
 public:
-    MyContext(const PContextProperties &properties, const pchar *networkType);
+    MyContext(const PContextProperties &properties);
     ~MyContext();
     
     virtual pbool onInitialized();
@@ -28,12 +29,18 @@ public:
 
 protected:
     virtual pbool onKeyboard(PEvent *event);
-    virtual pbool onTap(PEvent *event);
+    virtual pbool onPanBegin(PEvent *event);
+    virtual pbool onPan(PEvent *event);
+    virtual pbool onPanEnd(PEvent *event);
 
 private:
     MyScene      *m_scene;
-    PString       m_networkType;
-    PNetworkNode *m_networkNode;
+    union
+    {
+        MyServer *m_server;
+        MyClient *m_client;
+    };
+    
 };
 
 #endif

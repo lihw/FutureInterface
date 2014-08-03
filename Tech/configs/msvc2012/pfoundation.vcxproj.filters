@@ -295,6 +295,9 @@
     <ClCompile Include="..\..\src\foundation\modules\network\pnetworkserver.cpp">
       <Filter>modules\network</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetwork.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\foundation\global\pconfigs.h">
@@ -610,6 +613,9 @@
       <Filter>modules\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\foundation\modules\network\pnetworkserver.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetwork.h">
       <Filter>modules\network</Filter>
     </ClInclude>
   </ItemGroup>

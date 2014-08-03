@@ -51,7 +51,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;P_ENABLE_NETWORK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -63,9 +63,9 @@
       <AdditionalIncludeDirectories>$(FIROOT)\Paper3D\include;$(FIROOT)\Tech\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>paper3d.lib;pplatform.lib;pfoundation.lib;zlib.lib;libpng.lib;tinyxml.lib;nanomsg.lib;libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>paper3d.lib;pplatform.lib;pfoundation.lib;zlib.lib;libpng.lib;tinyxml.lib;enet.lib;ws2_32.lib;winmm.lib;libEGL.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(FIROOT)\Tech\lib\msvc2012\Debug;$(FIROOT)\Paper3D\lib\msvc2012\Debug;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\libpng\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\tinyxml\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\zlib\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\gles20\lib;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\nanomsg\lib\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(FIROOT)\Tech\lib\msvc2012\Debug;$(FIROOT)\Paper3D\lib\msvc2012\Debug;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\libpng\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\tinyxml\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\zlib\lib\Debug\;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\gles20\lib;$(FIROOT)\Tech\3rdparty\platforms\msvc2012\enet\lib\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -75,6 +75,8 @@
 copy $(FIROOT)\Tech\bin\msvc2012\libGLESv2.dll $(OutDir)
 $(FIROOT)\Tools\bin\msvc2012\archiver.exe -o $(OutDir)\$(ProjectName).par $(ProjectDir)..\..\res
 copy $(OutDir)\$(ProjectName).par $(ProjectDir)..\..\res
+copy $(ProjectDir)..\..\res\setting.ini $(OutDir)
+
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

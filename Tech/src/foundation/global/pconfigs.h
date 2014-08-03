@@ -17,7 +17,7 @@
 // -------------------------------------------------------------- 
 
 // -------------------------------------------------------------- 
-// Core layer
+// Foundation layer
 // -------------------------------------------------------------- 
 #ifndef P_CONTEXT_MAXIMUM_NUMBER
 # define P_CONTEXT_MAXIMUM_NUMBER 16
@@ -38,10 +38,6 @@
 #define P_SPHERE_SEGMENT_NUMBER 32
 #define P_SPHERE_RING_NUMBER 16
 
-
-// -------------------------------------------------------------- 
-// Fondation layer
-// -------------------------------------------------------------- 
 #if !defined P_ENABLE_IMAGE_PNG
 #  define P_ENABLE_IMAGE_PNG 1
 #endif
@@ -50,19 +46,21 @@
 #  define P_ENABLE_IMAGE_TGA 1
 #endif
 
-// #---------+-----------------+-----------+-------------+
-// |         | logging=1       | logging=0 | not defined |
-// #-------+-----------------+-------------+-------------+
-// | debug   |       1         |     0     |    1        |
-// #---------+-----------------+-----------+-------------+
-// | release |       1         |     0     |    0        |
-// #---------+-----------------+-----------+-------------+
-
 #if !defined P_ENABLE_LOGGING  // Enable the logging
 # define P_ENABLE_LOGGING 1
 #endif 
 
-// Ditto
+#if !defined P_NETWORK_MAX_CONNECTIONS
+# define P_NETWORK_MAX_CONNECTIONS 8
+#endif
+
+#if !defined P_NETWORK_MAX_PACKET_SIZE
+# define P_NETWORK_MAX_PACKET_SIZE 4096
+#endif
+
+#if !defined P_NETWORK_POLL_TIME
+# define P_NETWORK_POLL_TIME 10 // Milliseconds
+#endif
 
 #if !defined P_ENABLE_MEMORY_DEBUGGING // Enable the memory debugging 
 #  if defined P_DEBUG && defined P_WIN32
@@ -71,6 +69,10 @@
 #    define P_ENABLE_MEMORY_DEBUGGING 0
 #  endif
 #endif 
+
+#if !defined P_ENABLE_NETWORK
+# define P_ENABLE_NETWORK 0
+#endif
 
 
 #endif // !PCONFIGS_H

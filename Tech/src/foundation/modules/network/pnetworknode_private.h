@@ -15,6 +15,8 @@ class PNetworkManager;
 
 class P_DLLEXPORT PNetworkNode
 {
+    friend class PNetworkManager;
+
 public:
     enum NodeTypeEnum
     {
@@ -23,50 +25,30 @@ public:
     };
     enum NodeStateEnum
     {
-        NETWORK_NOTCONNECTED,
+        NETWORK_DISCONNECTED,
+        NETWORK_CONNECTING,
         NETWORK_CONNECTED,     // Connected
         NETWORK_ERROR,         // Connected but has an error in sending or receiving 
     };
 
-    // address is in format like tcp://localhost:6666 or tcp:192.168.0.1:8888
-    PNetworkNode(NodeTypeEnum type, const pchar *address, 
-        PNetworkManager *manager);
+    // address is in format like a URL or a IPv4 address.
+    PNetworkNode(NodeTypeEnum type, PNetworkManager *manager);
     virtual ~PNetworkNode();
     
-    virtual pbool resume();
-    virtual void pause();
-    virtual void update();
-
-    void sendMessage(const pchar *message, puint32 length = 0);
-    // Upon message arrives.
-    virtual void onReceiveMessage(pchar *message, puint32 length);
-
     P_INLINE NodeTypeEnum type() const
     { return m_type; }
     P_INLINE NodeStateEnum state() const
     { return m_state; }
-    
-    // The length of the message buffer. The default is 4096.
-    void setMaxMessageLength(puint32 value);
-    // If the sending fails, how many times we redo the sending. The default
-    // is zero which means we don't do any resending.
-    void setResendTimes(puint32 value);
-    // If the last sending succeeds
-    P_INLINE pbool isSent() const 
-    { return m_successful; }
-    P_INLINE puint32 maxMessageLength() const 
-    { return m_bufferSize; }
 
 protected:
-    NodeTypeEnum  m_type;
-    NodeStateEnum m_state;
-    PString       m_address;
-    pint32        m_socket;
-    pchar        *m_buffer;
-    puint32       m_bufferSize;   // The received buffer size
-    puint32       m_bufferLength; // The length of the received message. 
-    pbool         m_successful;   // Sending is successful?
-    puint32       m_resendTimes;  // How many times we redo the resending.
+    virtual pbool resume() = 0;
+    virtual void pause() = 0;
+    virtual void update() = 0;
+
+protected:
+    NodeTypeEnum     m_type;
+    NodeStateEnum    m_state;
+    PNetworkManager *m_manager;
 };
 
 

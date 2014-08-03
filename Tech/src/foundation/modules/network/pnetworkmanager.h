@@ -12,6 +12,8 @@
 
 #include <PFoundation/pmodule.h>
 
+class PNetworkNode;
+
 class P_DLLEXPORT PNetworkManager : public PModule
 {
     friend class PNetworkNode;
@@ -27,11 +29,11 @@ public:
 
 private:
     void addNode(PNetworkNode *node);
+    void removeNode(PNetworkNode *node);
 
 private:
-    // The network manager can host one server, one server + one client
-    // or one client.
-    PNetworkNode *m_nodes[2];  
+    // Can only be server or client, not both.
+    PNetworkNode *m_node;  
 };
 
 #endif // PNETWORKMANAGER_H

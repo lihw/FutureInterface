@@ -21,10 +21,10 @@ void pMain(int argc, char* argv[])
     {
         PContextProperties contextProperties;
         contextProperties.m_contextName = PString("network");
-        contextProperties.m_archiveName = PString("");
+        contextProperties.m_archiveName = PString("network.par");
 #if defined P_WIN32
         contextProperties.m_windowWidth = 480;
-        contextProperties.m_windowHeight = 800;
+        contextProperties.m_windowHeight = 854;
         contextProperties.m_multisamples = 2;
         contextProperties.m_maxFps = 15;
 #elif defined P_ANDROID
@@ -32,18 +32,12 @@ void pMain(int argc, char* argv[])
         contextProperties.m_windowHeight = 0xffffffff;
 #endif
 
-        PContext *context;
-        if (argc == 0)
-        {
-            context = PNEW(MyContext(contextProperties, "server"));
-        }
-        else
-        {
-            context = PNEW(MyContext(contextProperties, argv[1]));
-        }
+        PContext *context = PNEW(MyContext(contextProperties));
         context->addModule(PNEW(PResourceManager(context)));
         context->addModule(PNEW(PSceneManager(context)));
+#if P_ENABLE_NETWORK == 1
         context->addModule(PNEW(PNetworkManager(context)));
+#endif
         // TODO: initialize more modules here.
 
         PActivity::s_activity->addContext(context);

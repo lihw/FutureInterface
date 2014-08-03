@@ -49,8 +49,6 @@ MyScene::MyScene(PContext *context)
     m_background->setTexture(texture);
 
     setBackgroundColor(pColorRGBA(1.0f, 1.0f, 1.0f, 0.0f));
-
-
 }
 
 MyScene::~MyScene()

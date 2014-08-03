@@ -6,17 +6,17 @@ PAPER3D_ROOT := $(FIROOT)/Paper3D
 TECH_LIBRARY_PATH := $(TECH_ROOT)/lib/android
 PAPER3D_LIBRARY_PATH := $(PAPER3D_ROOT)/lib/android
 
-APP_DEFINES := -DANDROID -DP_ANDROID 
+APP_DEFINES := -DANDROID -DP_ANDROID -DP_ENABLE_NETWORK=1
 
 ifeq ($(USE_STL), 1) 
-APP_DEFINES := $(APP_DEFINES) -DP_USE_STL
+APP_DEFINES := $(APP_DEFINES) -DP_USE_STL 
 $(info ...Use native STL...)
 else
 $(info ...No STL support...)
 endif
 
 ifeq ($(ENABLE_LOGGING), 1) 
-APP_DEFINES := $(APP_DEFINES) -DP_ENABLE_LOGGING
+APP_DEFINES := $(APP_DEFINES) -DP_ENABLE_LOGGING=1
 $(info ...Enable logging...)
 else
 $(info ...Disable logging...)
@@ -65,6 +65,14 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE := tinyxml
 LOCAL_SRC_FILES := $(EXT_LIBRARY_PATH)/tinyxml/lib/$(CONFIGURATION)/libtinyxml.a  
+
+include $(PREBUILT_STATIC_LIBRARY)    #or PREBUILT_SHARED_LIBRARY
+
+# enet
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := enet
+LOCAL_SRC_FILES := $(EXT_LIBRARY_PATH)/enet/lib/$(CONFIGURATION)/libenet.a  
 
 include $(PREBUILT_STATIC_LIBRARY)    #or PREBUILT_SHARED_LIBRARY
 
@@ -122,11 +130,13 @@ LOCAL_SRC_FILES := \
 $(TECH_ROOT)/src/platform/android/main.cpp \
 $(APP_PATH)/src/pmain.cpp \
 $(APP_PATH)/src/mycontext.cpp \
+$(APP_PATH)/src/myserver.cpp \
+$(APP_PATH)/src/myclient.cpp \
 $(APP_PATH)/src/myscene.cpp 
 
-LOCAL_LDLIBS := -llog -lgcc -lGLESv2 -ldl -landroid
+LOCAL_LDLIBS := -llog -lgcc -lGLESv2 -ldl -landroid 
 
-LOCAL_STATIC_LIBRARIES := paper3d platform foundation png z tinyxml
+LOCAL_STATIC_LIBRARIES := paper3d platform foundation png z tinyxml enet
 
 #-L$(EXT_LIBRARY_PATH)/freetype/lib -lfreetype 
 

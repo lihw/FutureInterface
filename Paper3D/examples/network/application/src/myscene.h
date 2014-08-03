@@ -12,6 +12,7 @@
 #include <Paper3D/pscene.h>
 
 class PContext;
+class PSprite2D;
 
 class MyScene : public PScene
 {
@@ -21,7 +22,14 @@ public:
 
     virtual void update();
 
+    void setupServerScene();
+    void setupClientScene();
+
+    void moveObject(pint32 dx, pint32 dy);
+
 private:
+    PSprite2D *m_type;
+    PSprite2D *m_object;
 };
 
 #endif

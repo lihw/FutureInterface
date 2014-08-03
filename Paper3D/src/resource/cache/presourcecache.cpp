@@ -110,11 +110,15 @@ const pchar *PResourceCache::addMaterialCache(const pchar *id,
     {
         id = generateUniqueId();
     }
-    // FIXME: check the uniqueness of the user specified id in asset space.
-    PMaterialCache *materialCache = PNEW(PMaterialCache(this, id, text, autoRelease));
-    insertObject(materialCache);
-
-    return materialCache->id();
+    // Check the uniqueness of the user specified id in asset space.
+    PCacheObject *obj = findObject(id);
+    if (obj == P_NULL)
+    {
+        obj = PNEW(PMaterialCache(this, id, text, autoRelease));
+        insertObject(obj);
+    }
+    
+    return obj->id();
 }
 
 PMeshCache *PResourceCache::getMeshCache(const pchar *id)

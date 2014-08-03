@@ -21,87 +21,59 @@
 PNetworkManager::PNetworkManager(PContext *context)
     : PModule("network-manager", context)
 {  
-    m_nodes[0] = P_NULL;
-    m_nodes[1] = P_NULL;
+    m_node = P_NULL;
 }
 
 PNetworkManager::~PNetworkManager()
 {
-    PASSERT(m_nodes[0] == P_NULL);
-    PASSERT(m_nodes[1] == P_NULL);
+    PASSERT(m_node == P_NULL);
 }
-
+    
 void PNetworkManager::uninitialize()
 {
-    PDELETE(m_nodes[0]);
-    PDELETE(m_nodes[1]);
+    PDELETE(m_node);
 }
 
 void PNetworkManager::update()
 {
-    if (m_nodes[0] != P_NULL)
+    if (m_node != P_NULL)
     {
-        m_nodes[0]->update();
-    }
-    if (m_nodes[1] != P_NULL)
-    {
-        m_nodes[1]->update();
+        m_node->update();
     }
 }
 
 pbool PNetworkManager::resume()
 {
-    pbool ret = true;
-    if (m_nodes[0] != P_NULL)
+    if (m_node != P_NULL)
     {
-        ret = m_nodes[0]->resume();
-    }
-    if (ret && m_nodes[1] != P_NULL)
-    {
-        ret = m_nodes[1]->resume();
+        return m_node->resume();
     }
 
-    return ret;
+    return true;
 }
 
 void PNetworkManager::pause()
 {
-    if (m_nodes[0] != P_NULL)
+    if (m_node != P_NULL)
     {
-        return m_nodes[0]->pause();
-    }
-    if (m_nodes[1] != P_NULL)
-    {
-        return m_nodes[1]->pause();
+        m_node->pause();
     }
 }
 
 void PNetworkManager::addNode(PNetworkNode *node)
 {
-    if (m_nodes[0] != P_NULL)
+    if (m_node == P_NULL)
     {
-        m_nodes[0] = node;
+        m_node = node;
     }
     else
     {
-        if (m_nodes[1] != P_NULL)
-        {
-            PLOG_ERROR("Network manager can't host more than two network nodes.");
-            PASSERT_NOTREACHABLE("Network manager can't host more than two network nodes.");
-        }
-        else 
-        {
-            if (m_nodes[0]->type() == node->type())
-            {
-                PLOG_ERROR("Network manager can't host two network %s.",
-                    m_nodes[0]->type() == PNetworkNode::NETWORK_SERVER? "server" : "client");
-                PASSERT_NOTREACHABLE("Network manager can't host two same network nodes.");
-            }
-            else
-            {
-                m_nodes[1] = node;
-            }
-        }
+        PLOG_ERROR("The network has been initialized");
     }
+}
+
+void PNetworkManager::removeNode(PNetworkNode *node)
+{
+    m_node = P_NULL;
 }
 

@@ -13,6 +13,7 @@
 #include "../../src/foundation/modules/network/pnetworkmanager.h"
 #include "../../src/foundation/modules/network/pnetworkclient.h"
 #include "../../src/foundation/modules/network/pnetworkserver.h"
+#include "../../src/foundation/modules/network/pnetwork.h"
 
 #include "../../src/foundation/modules/pmodule.h"
 

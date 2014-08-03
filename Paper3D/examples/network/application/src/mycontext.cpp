@@ -17,10 +17,11 @@
 #include <PFoundation/pfoundation.h>
 
 
-MyContext::MyContext(const PContextProperties &properties, const pchar *networkType)
+MyContext::MyContext(const PContextProperties &properties)
     : PContext(properties)
 {
     m_scene = P_NULL;
+    m_server = P_NULL;
 }
 
 MyContext::~MyContext()
@@ -34,14 +35,34 @@ pbool MyContext::onInitialized()
     sceneMgr->addScene(m_scene);
     sceneMgr->setMainScene(m_scene);
 
-    PNetworkManager *networkMgr = module<PNetworkManager>("network-manager");
-    if (m_networkType == "server")
+    PIni ini("setting.ini");
+    if (ini.numberOfEntries() == 0)
     {
-        m_networkNode = PNEW(MyServer("tcp://localhost:6666", networkMgr));
+        return false;
     }
-    else 
+    
+    PString address = ini.entry("address");
+    puint32 port    = ini.entry("port").toInt();
+    PString type    = ini.entry("type");
+
+    // Always make win32 application a server
+#if defined P_WIN32
+    type = PString("server");
+#endif
+
+    if (type == "server")
     {
-        m_networkNode = PNEW(MyClient("tcp://localhost:6666", networkMgr));
+        PNetworkManager *networkMgr = module<PNetworkManager>("network-manager");
+        PLOG_INFO("Start a server.");
+        m_server = PNEW(MyServer(m_scene, (puint16)port, networkMgr));
+        m_scene->setupServerScene();
+    }
+    else if (type == "client")
+    {
+        PNetworkManager *networkMgr = module<PNetworkManager>("network-manager");
+        PLOG_INFO("Start a client.");
+        m_client = PNEW(MyClient(address.c_str(), (puint16)port, 1000, networkMgr));
+        m_scene->setupClientScene();
     }
 
     return true;
@@ -69,14 +90,33 @@ pbool MyContext::onKeyboard(PEvent *event)
                 return true; 
         }
     }
+
     return true;
 }
 
-pbool MyContext::onTap(PEvent *event)
+pbool MyContext::onPanBegin(PEvent *event)
 {
-    if (m_networkType == "client")
-    {
-        m_networkNode->sendMessage("tap", 3);
-    }
-    return true;
+	return true;
 }
+
+pbool MyContext::onPan(PEvent *event)
+{
+    if (m_client != P_NULL && m_client->type() == PNetworkClient::NETWORK_CLIENT)
+    {
+        pint32 deltaX = event->parameter(P_EVENTPARAMETER__PAN_DELTA_X).toInt();
+        pint32 deltaY = event->parameter(P_EVENTPARAMETER__PAN_DELTA_Y).toInt();
+
+        puint8 msg[1024];
+        psprintf((pchar *)msg, 1024, "%d,%d", deltaX, deltaY);
+        PLOG_INFO("message: %s.", msg);
+        m_client->send(msg, -1);
+    }
+
+	return true;
+}
+
+pbool MyContext::onPanEnd(PEvent *event)
+{
+	return true;
+}
+

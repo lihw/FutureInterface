@@ -61,7 +61,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;$(FIROOT)/Tech/3rdparty/common/nanomsg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;$(FIROOT)/Tech/3rdparty/common/enet/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)$(ProjectName).lib</OutputFile>
@@ -77,7 +77,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;$(FIROOT)/Tech/3rdparty/common/nanomsg/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FIROOT)/Tech/3rdparty/platforms/msvc2012/gles20/include;$(FIROOT)/Tech/include;$(FIROOT)/Tech/3rdparty/common/libpng/include;$(FIROOT)/Tech/3rdparty/common/zlib/include;$(FIROOT)/Tech/3rdparty/common/tinyxml/include;$(FIROOT)/Tech/3rdparty/common/enet/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -103,6 +103,7 @@
     <ClInclude Include="..\..\src\foundation\modules\event\peventtype.h" />
     <ClInclude Include="..\..\src\foundation\modules\gesture\pgesturemanager.h" />
     <ClInclude Include="..\..\src\foundation\modules\gesture\pgesture_private.h" />
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetwork.h" />
     <ClInclude Include="..\..\src\foundation\modules\network\pnetworkclient.h" />
     <ClInclude Include="..\..\src\foundation\modules\network\pnetworkmanager.h" />
     <ClInclude Include="..\..\src\foundation\modules\network\pnetworknode_private.h" />
@@ -211,6 +212,7 @@
     <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepan.cpp" />
     <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturepinch.cpp" />
     <ClCompile Include="..\..\src\foundation\modules\gesture\pgesturetap.cpp" />
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetwork.cpp" />
     <ClCompile Include="..\..\src\foundation\modules\network\pnetworkclient.cpp" />
     <ClCompile Include="..\..\src\foundation\modules\network\pnetworkmanager.cpp" />
     <ClCompile Include="..\..\src\foundation\modules\network\pnetworknode.cpp" />
