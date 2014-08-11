@@ -12,7 +12,6 @@ ECHO Setting environment variables.
 if DEFINED FIROOT ( echo Installation was already executed ) ELSE (
 @setx /m FIROOT %CD%
 @setx /m PATH "%PATH%;%CD%\Tools\bin"
-ECHO "%PATH%"
 ECHO Installation completed.
 )
 GOTO EXIT

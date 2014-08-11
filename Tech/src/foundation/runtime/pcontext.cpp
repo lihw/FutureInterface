@@ -89,9 +89,14 @@ void PContext::destroy()
     if (m_state != P_CONTEXT_STATE_UNINITIALIZED)
     {
         for (pint32 i = (pint32)m_modules.size() - 1; i >= 0; --i)
-        {
+        {   
+            m_modules[i]->uninitialize();
             PDELETE(m_modules[i]);
         }
+
+        m_gestureManager->uninitialize();
+        m_timerManager->uninitialize();
+        m_eventManager->uninitialize();
 
         PDELETE(m_gestureManager);
         PDELETE(m_timerManager);

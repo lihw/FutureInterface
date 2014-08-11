@@ -33,7 +33,7 @@ pbool PModule::initialize()
     return true;
 }
 
-void PModule::unitialize()
+void PModule::uninitialize()
 {
 }
 

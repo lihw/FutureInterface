@@ -24,7 +24,7 @@ public:
 
     virtual void update();
     virtual pbool initialize();
-    virtual void unitialize();
+    virtual void uninitialize();
     virtual void pause();
     virtual pbool resume();
     

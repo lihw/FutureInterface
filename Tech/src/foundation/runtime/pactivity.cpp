@@ -9,10 +9,9 @@
 #include "pactivity.h"
 
 #include <PFoundation/PContext.h>
-
 #include <PFoundation/pnew.h>
 #include <PFoundation/passert.h>
-
+#include <PFoundation/pnetwork.h>
 
 PActivity *PActivity::s_activity = P_NULL;
 
@@ -42,15 +41,17 @@ PActivity::~PActivity()
 
 pbool PActivity::initialize()
 {
-    // Initialize the log system.
+    // TODO: Put the global initialize code here.
     pInitializeLogSystem();
+    pInitializeNetwork();
 
     return true;
 }
 
 void PActivity::uninitialize()
 {
-    // Unitialize the log system.
+    // TODO: Put the global uninitialize code here.
+    pUninitializeNetwork();
     pUninitializeLogSystem();
     
     // Delete contexts

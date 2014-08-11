@@ -283,6 +283,21 @@
     <ClCompile Include="..\..\src\foundation\math\parcball.cpp">
       <Filter>math</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetworkclient.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetworkmanager.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetworknode.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetworkserver.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\modules\network\pnetwork.cpp">
+      <Filter>modules\network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\foundation\global\pconfigs.h">
@@ -588,6 +603,21 @@
     <ClInclude Include="..\..\src\foundation\math\parcball.h">
       <Filter>math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetworkclient.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetworkmanager.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetworknode_private.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetworkserver.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\foundation\modules\network\pnetwork.h">
+      <Filter>modules\network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="stream">
@@ -655,6 +685,9 @@
     </Filter>
     <Filter Include="runtime">
       <UniqueIdentifier>{7d4cae6f-713c-4097-a71b-800e5be7204d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modules\network">
+      <UniqueIdentifier>{ee28bd06-80ad-447b-b2ce-343d349d7766}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
