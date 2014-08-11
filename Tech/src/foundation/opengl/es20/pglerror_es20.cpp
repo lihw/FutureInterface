@@ -12,8 +12,13 @@
 #include <PFoundation/plog.h>
 #include <PFoundation/passert.h>
 
-#include <GLES2/gl2.h>
-#include <GLES2/gl2ext.h> 
+#if defined P_IOS
+#  include <OpenGLES/ES2/gl.h>
+#  include <OpenGLES/ES2/glext.h>
+#else
+#  include <GLES2/gl2.h>
+#  include <GLES2/gl2ext.h> 
+#endif
 
 
 pbool P_APIENTRY pGlErrorCheck(const pchar* file, puint32 line, PLogVerbosityEnum logLevel)

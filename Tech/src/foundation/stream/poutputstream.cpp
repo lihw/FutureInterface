@@ -98,7 +98,7 @@ pbool POutputStream::writeUint8(puint8 value)
 
 pbool POutputStream::writeInt8(pint8 value)
 {
-    puint8 buffer[1] = {value};
+    puint8 buffer[1] = {(puint8)value};
     return writeBytes(1, buffer);
 }
 

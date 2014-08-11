@@ -116,7 +116,7 @@ pint32 PString::find(const char* str) const
 
 pint32 PString::rfind(pchar c) const
 {
-    for (puint32 i = m_l; i >= 0; --i)
+    for (pint32 i = (pint32)m_l; i >= 0; --i)
     {
         if (m_s[i] == c)
         {

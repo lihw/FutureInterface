@@ -117,7 +117,7 @@ pfloat32 PScroller::interpolateBySpline(pfloat32 x)
     puint32 index = (puint32)(samples * x);
 
     pfloat32 xInf = (pfloat32)index / samples;
-    pfloat32 xSup = (pfloat32)(index + 1) / samples;
+    //pfloat32 xSup = (pfloat32)(index + 1) / samples;
     pfloat32 sInf = m_spline[index];
     pfloat32 sSup = m_spline[index + 1];
 

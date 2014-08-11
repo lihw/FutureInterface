@@ -157,6 +157,8 @@ void PGesturePan::touchUp(pint32 x, pint32 y, puint32 timeStamp, pint32 pointer)
                 reset();
             }
             break;
+        default:
+            PLOG_WARNING("Pan is not supposed to end now.");
     }
 }
 

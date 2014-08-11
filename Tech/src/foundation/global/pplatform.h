@@ -13,17 +13,22 @@
 //
 // Platform recognition.
 //
+// FIXME: move this macro to building config (CMake)
 #if defined _MSC_VER || defined _WIN32
-# define P_WIN32 // FIXME: move this macro to building config
+# define P_WIN32
 # define P_MSC
-#endif
-
-#if defined __GUNC__ || defined __GNUG__
+#elif defined __APPLE__
+# define P_IOS
+# define P_LLVM
+#elif defined 
+# define __ANDROID__
 # define P_GCC
+#else
+# error "Unsupported platform"
 #endif
 
 //
-// Compiling switches
+// Compiling paragma
 //
 #if defined P_WIN32
 
@@ -33,7 +38,7 @@
 # define P_APIENTRY  __stdcall             ///< Calling convention for function exposed in the API
 # define P_CCONV     __cdecl               ///< Calling convention for C functions
 
-#elif defined P_ANDROID
+#elif defined P_ANDROID || defined P_IOS
 
 # define P_EXTERN    extern                ///< Function is Externally defined
 # define P_INLINE    inline                ///< Function is inlined (compiler decision)
@@ -43,7 +48,7 @@
 
 #else // Other platforms
 
-#error "Unknown platform"
+#error "Unsupported platform"
 
 #endif // P_WIN32
 

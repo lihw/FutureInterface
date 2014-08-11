@@ -14,7 +14,9 @@
 
 
 #if defined P_ANDROID
-# include "android/pandroidenvironment.h"
+#  include "android/pandroidenvironment.h"
+#elif defined P_IOS
+# include "ios/piosenvironment.h"
 #endif
 
 

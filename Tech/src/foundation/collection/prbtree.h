@@ -239,8 +239,7 @@ typename PRbTree<T, Op>::Node *PRbTree<T, Op>::insertUnique(const T &t)
 {
     Node *parent = m_header;
     Node *insertPos = m_root;
-    pbool isEqual = false;
-
+    
     while (insertPos != P_NULL)
     {
         parent = insertPos;

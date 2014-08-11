@@ -92,7 +92,7 @@ enum PLogChannelEnum
 #endif
 
 #if P_ENABLE_LOGGING == 1
-# if defined P_GCC
+# if defined P_GCC || defined P_LLVM
 #  define PLOG_ERROR(fmt, ...) \
     do { pLog(P_LOG_ERROR, P_LOG_CHANNEL_DEFAULT, __FILE__, __LINE__, fmt, ##__VA_ARGS__); } while (0)
 #  define PLOG_ERRORX(channel, fmt, ...) \
@@ -122,7 +122,7 @@ enum PLogChannelEnum
 #  error "unsupported platform"
 # endif
 # if defined P_DEBUG
-#  if defined P_GCC
+#  if defined P_GCC || defined P_LLVM
 #   define PLOG_DEBUG(fmt, ...) \
      do{ pLog(P_LOG_DEBUG, P_LOG_CHANNEL_DEFAULT, __FILE__, __LINE__, fmt, ##__VA_ARGS__); } while (0)
 #   define PLOG_DEBUGX(channel, fmt, ...) \

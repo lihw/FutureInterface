@@ -17,31 +17,30 @@
 // -------------------------------------------------------------- 
 
 // -------------------------------------------------------------- 
-// Core layer
+// Foundation layer
 // -------------------------------------------------------------- 
 #ifndef P_CONTEXT_MAXIMUM_NUMBER
-# define P_CONTEXT_MAXIMUM_NUMBER 16
+#  define P_CONTEXT_MAXIMUM_NUMBER 16
 #endif
 
+#define P_CONTEXT_INVALID_ID  (0xffffffff)
+
 #ifndef P_EVENT_QUEUE_LENGTH
-# define P_EVENT_QUEUE_LENGTH 64 // The maximum event number in the event queue.
+#  define P_EVENT_QUEUE_LENGTH 64 // The maximum event number in the event queue.
 #endif
 
 #ifndef P_INPUT_MAXIMUM_TOUCH
-# define P_INPUT_MAXIMUM_TOUCH 5 // The maximum touch point supported
+#  define P_INPUT_MAXIMUM_TOUCH 5 // The maximum touch point supported
 #endif
 
 #ifndef P_INPUT_EVENT_QUEUE_INITIAL_SIZE
-# define P_INPUT_EVENT_QUEUE_INITIAL_SIZE 32 // The initial input queue length
+#  define P_INPUT_EVENT_QUEUE_INITIAL_SIZE 32 // The initial input queue length
 #endif
 
+// FIMXE: use function arguments rather than macros
 #define P_SPHERE_SEGMENT_NUMBER 32
 #define P_SPHERE_RING_NUMBER 16
 
-
-// -------------------------------------------------------------- 
-// Fondation layer
-// -------------------------------------------------------------- 
 #if !defined P_ENABLE_IMAGE_PNG
 #  define P_ENABLE_IMAGE_PNG 1
 #endif
@@ -59,7 +58,7 @@
 // #---------+-----------------+-----------+-------------+
 
 #if !defined P_ENABLE_LOGGING  // Enable the logging
-# define P_ENABLE_LOGGING 1
+#  define P_ENABLE_LOGGING 1
 #endif 
 
 // Ditto
@@ -67,7 +66,7 @@
 #if !defined P_ENABLE_MEMORY_DEBUGGING // Enable the memory debugging 
 #  if defined P_DEBUG && defined P_WIN32
 #    define P_ENABLE_MEMORY_DEBUGGING 1
-#else
+#  else
 #    define P_ENABLE_MEMORY_DEBUGGING 0
 #  endif
 #endif 

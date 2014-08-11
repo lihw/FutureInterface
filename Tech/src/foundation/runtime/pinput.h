@@ -394,8 +394,6 @@ public:
                 pfloat32 dirx = deltaX / l;
                 pfloat32 diry = deltaY / l;
 
-                pfloat32 delta = pAbs(100.0f - l);
-
                 pfloat32 dx = diry * (100.0f - l);
                 pfloat32 dy = -dirx * (100.0f - l);
 

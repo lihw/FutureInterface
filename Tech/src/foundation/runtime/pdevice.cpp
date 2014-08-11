@@ -97,6 +97,9 @@ void PDevice::update()
                     }
                 }
                 break;
+            default:
+                    PLOG_WARNING("Unknown input event type.");
+                    break;
             }
         }
     }

@@ -14,7 +14,7 @@
 
 #include <PFoundation/pglobal.h>
 
-#if defined P_ANDROID
+#if defined P_ANDROID || defined P_IOS
 # include <stddef.h> // for size_t
 #endif
 

@@ -27,6 +27,6 @@ P_EXTERN pint32 P_APIENTRY pAssetGetSize(PAsset *asset); // return the number of
 P_EXTERN pbool P_APIENTRY pAssetIsValid(PAsset *asset);
 P_EXTERN pint32 P_APIENTRY pAssetRead(PAsset *asset, void *buffer, puint32 count);
 P_EXTERN pint32 P_APIENTRY pAssetSeek(PAsset *asset, pint32 offset, PFileOriginEnum where);
-P_EXTERN pint32 P_APIENTRY pAssetgetRemainingLength(PAsset *asset);
+P_EXTERN pint32 P_APIENTRY pAssetGetRemainingLength(PAsset *asset);
 
 #endif // !PASSET_H
