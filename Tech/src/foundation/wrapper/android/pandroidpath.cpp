@@ -11,9 +11,14 @@
 
 #include <PFoundation/penvironment.h>
 
-const pchar * P_APIENTRY pPathGetSystemDirectory()
+const pchar * P_APIENTRY pPathGetApplicationDirectory()
 {
-    return g_pSystemPath;
+    return g_pApplicationPath;
+}
+
+const pchar * P_APIENTRY pPathGetDocumentDirectory()
+{
+    return g_pDocumentPath;
 }
 
 const pchar * P_APIENTRY pPathGetDelimiter()
@@ -21,7 +26,7 @@ const pchar * P_APIENTRY pPathGetDelimiter()
     return "/";
 }
 
-const pchar * P_APIENTRY pPathGetSDCardPath()
+const pchar * P_APIENTRY pPathGetExternalStoragePath()
 {
     return g_pSDCardPath;
 }

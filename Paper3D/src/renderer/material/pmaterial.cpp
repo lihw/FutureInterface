@@ -20,8 +20,8 @@
 #include <Paper3D/presourcemanager.h>
 
 #include <PFoundation/pxmlelement.h>
-
 #include <PFoundation/pcrt.h>
+#include <PFoundation/pglerror.h>
 
 
 PMaterialParameter *PMaterial::s_phonyMaterialParameter = P_NULL; 
@@ -122,6 +122,8 @@ void PMaterial::apply(PRenderState           *renderState,
                       PCamera                *camera,
                       const PRenderLightQueue &lights)
 {
+    pGlErrorCheckError();
+    
     PASSERT(m_resource != P_NULL);
     if (m_resource== P_NULL)
     {
@@ -138,11 +140,15 @@ void PMaterial::apply(PRenderState           *renderState,
     puint32 num;
     puint32 numTextures = 0;
 
+    pGlErrorCheckError();
+    
     num = m_resource->numberOfRenderParameters();
     for (puint32 i = 0; i < num; ++i)
     {
         m_resource->renderParameter(i)->upload(m_resource->shader(), &transform, camera, lights);
     }
+    pGlErrorCheckError();
+    
     num = m_materialParameters.count();
     for (puint32 i = 0; i < num; ++i)
     {

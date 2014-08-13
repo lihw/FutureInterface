@@ -26,6 +26,19 @@
 		ED9C48A91999E2F80083A14B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED9C48791999E2A30083A14B /* main.mm */; };
 		ED9C48AB1999E2F80083A14B /* piosinput.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED9C487C1999E2A30083A14B /* piosinput.mm */; };
 		ED9C48B01999FAA80083A14B /* piosglview.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED9C48AE1999EDAE0083A14B /* piosglview.mm */; };
+		EDA1106B199B16CA006E2216 /* ptimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4500199900240094AEE9 /* ptimer.cpp */; };
+		EDA1106C199B16CC006E2216 /* ptimermanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4502199900240094AEE9 /* ptimermanager.cpp */; };
+		EDA1106D199B16DC006E2216 /* pabstractgesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F4199900240094AEE9 /* pabstractgesture.cpp */; };
+		EDA1106E199B16DC006E2216 /* pgesturefling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F6199900240094AEE9 /* pgesturefling.cpp */; };
+		EDA1106F199B16DC006E2216 /* pgesturelongpress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F7199900240094AEE9 /* pgesturelongpress.cpp */; };
+		EDA11070199B16DC006E2216 /* pgesturemanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F8199900240094AEE9 /* pgesturemanager.cpp */; };
+		EDA11071199B16DC006E2216 /* pgesturepan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FA199900240094AEE9 /* pgesturepan.cpp */; };
+		EDA11072199B16DC006E2216 /* pgesturepinch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FB199900240094AEE9 /* pgesturepinch.cpp */; };
+		EDA11073199B16DC006E2216 /* pgesturetap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FC199900240094AEE9 /* pgesturetap.cpp */; };
+		EDA11074199B16E3006E2216 /* pevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44EB199900240094AEE9 /* pevent.cpp */; };
+		EDA11075199B16E3006E2216 /* peventmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44ED199900240094AEE9 /* peventmanager.cpp */; };
+		EDA11076199B16E3006E2216 /* peventparameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44EF199900240094AEE9 /* peventparameters.cpp */; };
+		EDA11077199B16E3006E2216 /* peventtype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F1199900240094AEE9 /* peventtype.cpp */; };
 		EDAEF57D199848A400EC8C71 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDAEF552199847D000EC8C71 /* Foundation.framework */; };
 		EDAF45E9199900340094AEE9 /* parchivefile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4484199900240094AEE9 /* parchivefile.cpp */; };
 		EDAF45EA199900430094AEE9 /* parray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4488199900240094AEE9 /* parray.cpp */; };
@@ -60,16 +73,6 @@
 		EDAF4607199900C00094AEE9 /* pmemorydebugger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44DD199900240094AEE9 /* pmemorydebugger.cpp */; };
 		EDAF4608199900C00094AEE9 /* pmemoryfunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44DF199900240094AEE9 /* pmemoryfunction.cpp */; };
 		EDAF4609199900C00094AEE9 /* pnew.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44E1199900240094AEE9 /* pnew.cpp */; };
-		EDAF460A199900C90094AEE9 /* pevent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44EB199900240094AEE9 /* pevent.cpp */; };
-		EDAF460B199900C90094AEE9 /* peventmanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44ED199900240094AEE9 /* peventmanager.cpp */; };
-		EDAF460C199900C90094AEE9 /* peventparameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44EF199900240094AEE9 /* peventparameters.cpp */; };
-		EDAF460D199900C90094AEE9 /* peventtype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F1199900240094AEE9 /* peventtype.cpp */; };
-		EDAF460E199900D40094AEE9 /* pabstractgesture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F4199900240094AEE9 /* pabstractgesture.cpp */; };
-		EDAF460F199900D40094AEE9 /* pgesturelongpress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F7199900240094AEE9 /* pgesturelongpress.cpp */; };
-		EDAF4610199900D40094AEE9 /* pgesturemanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44F8199900240094AEE9 /* pgesturemanager.cpp */; };
-		EDAF4611199900D40094AEE9 /* pgesturepan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FA199900240094AEE9 /* pgesturepan.cpp */; };
-		EDAF4612199900D40094AEE9 /* pgesturepinch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FB199900240094AEE9 /* pgesturepinch.cpp */; };
-		EDAF4613199900D40094AEE9 /* pgesturetap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FC199900240094AEE9 /* pgesturetap.cpp */; };
 		EDAF4614199900D40094AEE9 /* pmodule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF44FD199900240094AEE9 /* pmodule.cpp */; };
 		EDAF4615199900DE0094AEE9 /* pentity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4505199900240094AEE9 /* pentity.cpp */; };
 		EDAF4616199900DE0094AEE9 /* pobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAF4507199900240094AEE9 /* pobject.cpp */; };
@@ -948,17 +951,17 @@
 				EDAF463A1999011C0094AEE9 /* pconststring.cpp in Sources */,
 				EDAF4616199900DE0094AEE9 /* pobject.cpp in Sources */,
 				EDAF45EF1999005C0094AEE9 /* pstring.cpp in Sources */,
-				EDAF4611199900D40094AEE9 /* pgesturepan.cpp in Sources */,
+				EDA11071199B16DC006E2216 /* pgesturepan.cpp in Sources */,
 				EDAF4624199901000094AEE9 /* ppropertycolor.cpp in Sources */,
 				EDAF45F01999005F0094AEE9 /* pvariant.cpp in Sources */,
 				EDAF4609199900C00094AEE9 /* pnew.cpp in Sources */,
 				EDAF4633199901100094AEE9 /* pactivity.cpp in Sources */,
-				EDAF4613199900D40094AEE9 /* pgesturetap.cpp in Sources */,
+				EDA11074199B16E3006E2216 /* pevent.cpp in Sources */,
 				EDAF45FE199900B90094AEE9 /* pmathutility.cpp in Sources */,
 				EDAF4606199900B90094AEE9 /* pvector4.cpp in Sources */,
-				EDAF460E199900D40094AEE9 /* pabstractgesture.cpp in Sources */,
 				EDAF4636199901100094AEE9 /* pdevice.cpp in Sources */,
 				EDAF4652199990E90094AEE9 /* piosdebugutility.mm in Sources */,
+				EDA11075199B16E3006E2216 /* peventmanager.cpp in Sources */,
 				EDAF4615199900DE0094AEE9 /* pentity.cpp in Sources */,
 				EDAF45F51999006F0094AEE9 /* plogoutputdebug.cpp in Sources */,
 				EDAF4617199900EA0094AEE9 /* pglerror_es20.cpp in Sources */,
@@ -967,10 +970,11 @@
 				EDAF45FC199900B90094AEE9 /* pinterpolatedvalue.cpp in Sources */,
 				EDAF45F8199900A20094AEE9 /* pimagepng.cpp in Sources */,
 				EDAF45F31999006A0094AEE9 /* plog.cpp in Sources */,
-				EDAF4610199900D40094AEE9 /* pgesturemanager.cpp in Sources */,
 				EDAF461B199900EA0094AEE9 /* pglstate_es20.cpp in Sources */,
 				EDAF45E9199900340094AEE9 /* parchivefile.cpp in Sources */,
 				EDAF4600199900B90094AEE9 /* pmatrix4x4.cpp in Sources */,
+				EDA1106E199B16DC006E2216 /* pgesturefling.cpp in Sources */,
+				EDA1106D199B16DC006E2216 /* pabstractgesture.cpp in Sources */,
 				EDAF45EB199900480094AEE9 /* plist.cpp in Sources */,
 				EDAF463D1999011C0094AEE9 /* ptimeline.cpp in Sources */,
 				EDAF45ED199900560094AEE9 /* prbtree.cpp in Sources */,
@@ -978,17 +982,15 @@
 				EDAF462A199901000094AEE9 /* ppropertytransform.cpp in Sources */,
 				EDAF4651199990E90094AEE9 /* pioscrt.mm in Sources */,
 				EDAF46311999010A0094AEE9 /* pstreamfile.cpp in Sources */,
+				EDA11076199B16E3006E2216 /* peventparameters.cpp in Sources */,
 				EDAF463C1999011C0094AEE9 /* pscrollersnap.cpp in Sources */,
+				EDA11077199B16E3006E2216 /* peventtype.cpp in Sources */,
 				EDAF4620199900F50094AEE9 /* pxmldocument.cpp in Sources */,
 				EDAF461C199900EA0094AEE9 /* pgltexture_es20.cpp in Sources */,
 				EDAF4626199901000094AEE9 /* ppropertyint.cpp in Sources */,
-				EDAF460F199900D40094AEE9 /* pgesturelongpress.cpp in Sources */,
 				EDAF4601199900B90094AEE9 /* pplane.cpp in Sources */,
 				EDAF4634199901100094AEE9 /* pcontext.cpp in Sources */,
 				EDAF461F199900F50094AEE9 /* pini.cpp in Sources */,
-				EDAF460D199900C90094AEE9 /* peventtype.cpp in Sources */,
-				EDAF460B199900C90094AEE9 /* peventmanager.cpp in Sources */,
-				EDAF460C199900C90094AEE9 /* peventparameters.cpp in Sources */,
 				EDAF4653199990E90094AEE9 /* piosdir.mm in Sources */,
 				EDAF45FA199900AA0094AEE9 /* parcball.cpp in Sources */,
 				EDAF4605199900B90094AEE9 /* pvector3.cpp in Sources */,
@@ -998,6 +1000,7 @@
 				EDAF4603199900B90094AEE9 /* prandom.cpp in Sources */,
 				EDAF4621199900F50094AEE9 /* pxmlelement.cpp in Sources */,
 				EDAF4604199900B90094AEE9 /* pvector2.cpp in Sources */,
+				EDA1106B199B16CA006E2216 /* ptimer.cpp in Sources */,
 				EDAF461E199900F50094AEE9 /* ini.cpp in Sources */,
 				EDAF45FD199900B90094AEE9 /* pline.cpp in Sources */,
 				EDAF45FB199900B90094AEE9 /* pbox.cpp in Sources */,
@@ -1008,6 +1011,7 @@
 				EDAF45F6199900720094AEE9 /* plogoutputfile.cpp in Sources */,
 				EDAF4618199900EA0094AEE9 /* pglframebuffer_es20.cpp in Sources */,
 				EDAF4614199900D40094AEE9 /* pmodule.cpp in Sources */,
+				EDA11072199B16DC006E2216 /* pgesturepinch.cpp in Sources */,
 				EDAF45EE199900590094AEE9 /* pset.cpp in Sources */,
 				EDAF461A199900EA0094AEE9 /* pglshader_es20.cpp in Sources */,
 				EDAF462E1999010A0094AEE9 /* pinputstream.cpp in Sources */,
@@ -1016,14 +1020,16 @@
 				EDAF46391999011C0094AEE9 /* pcolorrgba.cpp in Sources */,
 				ED9C48661999C9100083A14B /* piosenvironment.mm in Sources */,
 				EDAF4655199990E90094AEE9 /* piostime.mm in Sources */,
+				EDA11073199B16DC006E2216 /* pgesturetap.cpp in Sources */,
 				EDAF4628199901000094AEE9 /* ppropertyprojection.cpp in Sources */,
+				EDA1106F199B16DC006E2216 /* pgesturelongpress.cpp in Sources */,
 				EDAF4635199901100094AEE9 /* pcontextproperties.cpp in Sources */,
 				EDAF4619199900EA0094AEE9 /* pglrenderbuffer_es20.cpp in Sources */,
-				EDAF4612199900D40094AEE9 /* pgesturepinch.cpp in Sources */,
+				EDA1106C199B16CC006E2216 /* ptimermanager.cpp in Sources */,
 				EDAF45F7199900A00094AEE9 /* pimage.cpp in Sources */,
 				EDAF4650199990E90094AEE9 /* piosasset.mm in Sources */,
 				EDAF461D199900EA0094AEE9 /* pglvertexbuffer_es20.cpp in Sources */,
-				EDAF460A199900C90094AEE9 /* pevent.cpp in Sources */,
+				EDA11070199B16DC006E2216 /* pgesturemanager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,6 +1210,7 @@
 				ED9C48691999CCA40083A14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		ED9C48A31999E2DE0083A14B /* Build configuration list for PBXNativeTarget "platform" */ = {
 			isa = XCConfigurationList;
@@ -1212,6 +1219,7 @@
 				ED9C48A51999E2DE0083A14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 		EDAEF54A199847D000EC8C71 /* Build configuration list for PBXProject "Tech" */ = {
 			isa = XCConfigurationList;

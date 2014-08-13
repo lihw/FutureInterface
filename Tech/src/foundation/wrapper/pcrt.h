@@ -28,7 +28,10 @@ P_EXTERN puint32 P_CCONV psprintf(pchar* buffer, puint32 size, const pchar* form
 //
 // <cstring>
 //
-// n should be less than the size of destination buffer size excluding the ending '\0'
+// Copy at most n characters of src to dst.
+// If src has more than n characters excluding the ending '\0', only
+// the first n - 1 characters are copied to dst. The dst is always '\0' terminated
+// One needs to make sure dst has n + 1 characters long.
 P_EXTERN void P_APIENTRY pstrncpy(pchar* dst, const pchar* src, puint32 n);
 
 P_EXTERN pint32 P_APIENTRY pstrcmp(const pchar* left, const pchar* right);

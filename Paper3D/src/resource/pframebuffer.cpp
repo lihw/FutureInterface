@@ -42,6 +42,21 @@ PFrameBuffer::PFrameBuffer(puint32 width,
     }
 }
     
+PFrameBuffer::PFrameBuffer()
+    : PResourceObject("default-framebuffer", P_NULL, P_RESOURCE_GPU)
+{
+    m_width  = 0xffffffff;
+    m_height = 0xffffffff;
+
+    m_colorTexture = P_NULL;
+
+    m_colorBufferFormat   = P_GLTEXTURE_FORMAT_UNKNOWN;
+    m_depthBufferFormat   = P_GLTEXTURE_FORMAT_UNKNOWN;
+    m_stencilBufferFormat = P_GLTEXTURE_FORMAT_UNKNOWN;
+
+    m_framebufferObject = P_NULL;
+}
+    
 PFrameBuffer::~PFrameBuffer()
 {
     PDELETE(m_framebufferObject);
@@ -116,13 +131,7 @@ void PFrameBuffer::copyFrameBuffer(PRenderState *renderState)
     
 PFrameBuffer *PFrameBuffer::createDefaultFrameBuffer()
 {
-    PFrameBuffer *ret = PNEW(PFrameBuffer(0xffffffff,
-                                          0xffffffff,
-                                          P_GLTEXTURE_FORMAT_UNKNOWN,
-                                          P_GLTEXTURE_FORMAT_UNKNOWN,
-                                          P_GLTEXTURE_FORMAT_UNKNOWN,
-                                          "default-framebuffer",
-                                          P_NULL));
+    PFrameBuffer *ret = PNEW(PFrameBuffer);
     ret->m_available = true;
     ret->m_framebufferObject = PGlFramebuffer::createDefaultFramebuffer();
     return ret;

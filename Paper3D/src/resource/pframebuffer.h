@@ -56,6 +56,9 @@ private:
                  PResourceManager* resourceManager); 
     virtual ~PFrameBuffer();
 
+    // Only used by createDefaultFrameBuffer();
+    PFrameBuffer();
+
     pbool createFramebuffer(); 
 
 private:

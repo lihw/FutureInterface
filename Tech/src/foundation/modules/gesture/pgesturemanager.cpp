@@ -1,4 +1,4 @@
-// pgestureManager.cpp
+// pgesturemanager.cpp
 // The gesture detector files.
 //
 // Copyright 2012 - 2014 Future Interface. 
@@ -18,6 +18,8 @@
 #include <PFoundation/plog.h>
 #include <PFoundation/passert.h>
 #include <PFoundation/ptime.h>
+
+#include "pgesture_private.h"
 
 
 PGestureManager::PGestureManager(PContext *context)

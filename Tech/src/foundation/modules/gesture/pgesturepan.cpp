@@ -7,6 +7,7 @@
 // Hongwei Li lihw81@gmail.com
 
 
+#include "pgesturemanager.h"
 #include "pgesture_private.h"
 
 #include <PFoundation/pgesturemanager.h>

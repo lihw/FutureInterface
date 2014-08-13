@@ -13,21 +13,21 @@
 
 #include <PFoundation/passert.h>
 #include <PFoundation/pnew.h>
+#include <PFoundation/ppath.h>
+#include <PFoundation/pcrt.h>
+#include <PFoundation/plog.h>
+
 
 PAsset P_APIENTRY pAssetOpen(const pchar *fileName)
 {
-    //NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    // Create a folder for book
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:
-                          [NSString stringWithUTF8String:fileName]];
-    
-    const pchar *filePathChar = [filePath UTF8String];
+    pchar path[4096];
+    pstrncpy(path, pPathGetApplicationDirectory(), 4096);
+    pstrcat(path, pPathGetDelimiter());
+    pstrcat(path, fileName);
+
     PAsset ret;
     
-    ret.pHandle = (void *)fopen(filePathChar, "rb");
+    ret.pHandle = (void *)fopen(path, "rb");
     ret.pData   = P_NULL;
     
     return ret;
