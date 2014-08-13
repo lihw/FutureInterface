@@ -10,6 +10,8 @@
 #import "piosglview.h"
 
 #include <PFoundation/pcontext.h>
+#include <PFoundation/pglerror.h>
+
 
 @implementation PIOSGLView
 
@@ -18,7 +20,11 @@
 }
 
 - (void)render:(CADisplayLink*)displayLink {
+    
     //_currentRotation += displayLink.duration * 90;
+    
+    pGlErrorCheckError();
+    
     if (_pcontext != P_NULL &&
         (_pcontext->state() == P_CONTEXT_STATE_RUNNING ||
          _pcontext->state() == P_CONTEXT_STATE_PAUSED))
@@ -37,11 +43,6 @@
     }
     
     [_context presentRenderbuffer:GL_RENDERBUFFER];
-}
-
-- (void)setupDisplayLink {
-    CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
-    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];    
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -70,6 +71,9 @@
             NSLog(@"Failed to set current OpenGL context");
             return nil;
         }
+        
+        int screenWidth = self.frame.size.width;
+        int screenHeight = self.frame.size.height;
     
         // Setup the color and depth buffer.
         glGenRenderbuffers(1, &_colorRenderBuffer);
@@ -78,7 +82,7 @@
     
         glGenRenderbuffers(1, &_depthRenderBuffer);
         glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, self.frame.size.width, self.frame.size.height);    
+        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, screenWidth, screenHeight);
     
         // Setup the default framebuffer object.
         glGenFramebuffers(1, &_framebuffer);
@@ -89,8 +93,7 @@
             GL_RENDERBUFFER, _depthRenderBuffer);
         
         // Initialize the Tech context.
-        if (!_pcontext->initialize(_pcontext->properties()->m_windowWidth, 
-                                   _pcontext->properties()->m_windowHeight))
+        if (!_pcontext->initialize(screenWidth, screenHeight))
         {
             return nil;
         }
@@ -99,18 +102,15 @@
             if (!context->onInitialized())
             {
                 context->setState(P_CONTEXT_STATE_ERROR);
-            }
-            else
-            {
-                PLOG_DEBUG("Starting program main loop");
-                context->setState(P_CONTEXT_STATE_RUNNING);
-            }
-
-            if (context->state() == P_CONTEXT_STATE_ERROR)
-            {
                 return nil;
             }
         }
+
+        // Setup the diplay link.
+        CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
+        [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        
+        pGlErrorCheckError();
     }
 
     return self;

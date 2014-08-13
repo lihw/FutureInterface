@@ -20,20 +20,6 @@
                ReferencedContainer = "container:Tech.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED9C48861999E2DE0083A14B"
-               BuildableName = "libplatform.a"
-               BlueprintName = "platform"
-               ReferencedContainer = "container:Tech.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

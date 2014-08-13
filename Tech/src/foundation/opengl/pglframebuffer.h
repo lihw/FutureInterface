@@ -45,7 +45,6 @@ private:
     PGlRenderbuffer *m_depthBuffer;
     PGlRenderbuffer *m_stencilBuffer;
     puint32          m_framebuffer;
-    static puint32   m_defaultFramebuffer;
 };
 
 #endif // !PGLFRAMEBUFFER_H

@@ -274,6 +274,8 @@ void PGlTexture::enable(puint32 textureUnit)
 
     m_enabled = true;
     
+    pGlErrorCheckError();
+    
     glActiveTexture(GL_TEXTURE0 + textureUnit);
     glBindTexture(m_target, m_texture);
 
@@ -287,6 +289,8 @@ void PGlTexture::disable()
     PASSERT(m_enabled);
     PASSERT(m_textureUnit != 0xffffffff);
     
+        pGlErrorCheckError();
+    
     if (!m_enabled)
     {
         return ;
@@ -297,6 +301,8 @@ void PGlTexture::disable()
     glBindTexture(m_target, 0);
 
     m_textureUnit = 0xffffffff;
+    
+    pGlErrorCheckError();
 }
     
 void PGlTexture::copyTexture(PGlTextureFormatEnum format, 

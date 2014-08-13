@@ -14,23 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED9C48B9199A221E0083A14B"
-               BuildableName = "libpaper3d.a"
-               BlueprintName = "paper3d"
+               BlueprintIdentifier = "ED9C49A4199A23330083A14B"
+               BuildableName = "buildall"
+               BlueprintName = "buildall"
                ReferencedContainer = "container:Paper3D.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForTesting = "NO"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ED9C49A4199A23330083A14B"
-               BuildableName = "buildall"
-               BlueprintName = "buildall"
+               BlueprintIdentifier = "ED9C48B9199A221E0083A14B"
+               BuildableName = "libpaper3d.a"
+               BlueprintName = "paper3d"
                ReferencedContainer = "container:Paper3D.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

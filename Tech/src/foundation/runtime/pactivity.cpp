@@ -43,7 +43,11 @@ pbool PActivity::initialize()
 {
     // TODO: Put the global initialize code here.
     pInitializeLogSystem();
+    
+    // TODO: enable network module under iOS
+#if !defined P_IOS
     pInitializeNetwork();
+#endif
 
     return true;
 }
@@ -51,7 +55,12 @@ pbool PActivity::initialize()
 void PActivity::uninitialize()
 {
     // TODO: Put the global uninitialize code here.
+    
+    // TODO: enable network module under iOS
+#if !defined P_IOS
     pUninitializeNetwork();
+#endif
+
     pUninitializeLogSystem();
     
     // Delete contexts

@@ -12,8 +12,9 @@
 
 #include <PFoundation/pglobal.h>
 
-P_EXTERN const pchar * P_APIENTRY pPathGetSystemDirectory();
+P_EXTERN const pchar * P_APIENTRY pPathGetApplicationDirectory();
+P_EXTERN const pchar * P_APIENTRY pPathGetDocumentDirectory();
 P_EXTERN const pchar * P_APIENTRY pPathGetDelimiter();
-P_EXTERN const pchar * P_APIENTRY pPathGetSDCardPath();
+P_EXTERN const pchar * P_APIENTRY pPathGetExternalStoragePath();
 
 #endif // !PPATH_H

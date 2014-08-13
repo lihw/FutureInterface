@@ -14,14 +14,9 @@
 
 PAsset P_APIENTRY pAssetOpen(const pchar *fileName)
 {
-    // Convert the absolute path to relative path as we assume
-    // under Windows, the asset resources are in the same folder of
+    // The asset resources are in the same folder of
     // executable/working directory.
     const pchar *path = fileName;
-    if (*path == '/')
-    {
-        path++;
-    }
 
     PAsset ret;
     ret.pHandle = pfopen(path, "rb"); 

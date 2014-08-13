@@ -16,14 +16,8 @@
 
 PAsset P_APIENTRY pAssetOpen(const pchar *fileName)
 {
-    const pchar *path = fileName;
-    if (*path == '/')
-    {
-        ++path;
-    }
-
     PAsset ret;
-    ret.pHandle = (void*)AAssetManager_open(g_pAssetManager, path, AASSET_MODE_STREAMING); 
+    ret.pHandle = (void*)AAssetManager_open(g_pAssetManager, fileName, AASSET_MODE_STREAMING); 
     ret.pData = P_NULL;
     return ret;
 }

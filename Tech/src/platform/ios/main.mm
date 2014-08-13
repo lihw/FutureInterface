@@ -69,6 +69,8 @@ P_EXTERN void pMain(int argc, char* argv[]);
     
     [self.window makeKeyAndVisible];
     
+    pGlErrorCheckError();
+    
     return YES;
 }
 
@@ -103,7 +105,15 @@ P_EXTERN void pMain(int argc, char* argv[]);
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     PContext *context = _activity->findContext((puint32)0);
-    context->resume();
+    if (context->state() == P_CONTEXT_STATE_UNINITIALIZED)
+    {
+        PLOG_DEBUG("Starting program main loop");
+        context->setState(P_CONTEXT_STATE_RUNNING);
+    }
+    else
+    {
+        context->resume();
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -135,7 +145,7 @@ P_EXTERN void pMain(int argc, char* argv[]);
 int main(int argc, char* argv[])
 {
     @autoreleasepool {
-        int retVal = UIApplicationMain(argc, argv, nil, @"AppDelegate");
+        int retVal = UIApplicationMain(argc, argv, nil, @"PAppDelegate");
         return retVal;
     }
 }

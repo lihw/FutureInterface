@@ -538,7 +538,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target paper3d ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target paper3d -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libpaper3d.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libpaper3d.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libpaper3d.a\"\n\n# Last touch. copy the static library file to output folder.\nLIBRARY_OUTPUTFOLDER=${SRCROOT}/../../lib/ios/ES20_${CONFIGURATION}\nmkdir -p ${LIBRARY_OUTPUTFOLDER}\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/libpaper3d.a\" ${LIBRARY_OUTPUTFOLDER}";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target paper3d ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target paper3d -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libpaper3d.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libpaper3d.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libpaper3d.a\"\n\n# Last touch. copy the static library file to output folder.\nLIBRARY_OUTPUTFOLDER=${SRCROOT}/../../lib/ios/${CONFIGURATION}\nmkdir -p ${LIBRARY_OUTPUTFOLDER}\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/libpaper3d.a\" ${LIBRARY_OUTPUTFOLDER}";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -642,8 +642,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos7.1;
 			};
 			name = Debug;
 		};
@@ -673,7 +673,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				SDKROOT = iphoneos;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos7.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -756,6 +757,7 @@
 				ED9C49A7199A23330083A14B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
