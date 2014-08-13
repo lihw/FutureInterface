@@ -62,6 +62,8 @@ void PRenderLightQueue::addLight(PAbstractLight *light)
             }
             m_lights[3] = reinterpret_cast<PSpotLight *>(light);
             break;
+        default:
+            PASSERT_NOTREACHABLE("Unknown light type.");
     }
 }
 

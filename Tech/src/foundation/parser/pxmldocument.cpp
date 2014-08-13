@@ -108,7 +108,7 @@ pbool PXmlDocument::parse(PInputStream &inputStream)
     if (m_document != P_NULL && m_document->m_document != P_NULL)
     {
         puint8 *text;
-        puint32 len = inputStream.readAllBytes(text);
+        inputStream.readAllBytes(text);
         pbool ret = parse((const pchar *)text);
         PDELETEARRAY(text);        
         return ret;

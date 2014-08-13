@@ -20,7 +20,7 @@
 #include <dbghelp.h>
 
 
-extern void pMain(int argc, char* argv[]);
+P_EXTERN void pMain(int argc, char* argv[]);
 
 
 int pwin32main(int argc, char* argv[])

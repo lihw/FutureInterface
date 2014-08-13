@@ -221,7 +221,7 @@ void PAnimationInstance::update()
     PASSERT(m_manager != P_NULL);
 
     if ((m_target == P_NULL && m_callback == P_NULL) ||
-         m_animation == P_NULL && m_manager == P_NULL)
+         m_animation == P_NULL || m_manager == P_NULL)
     {
         return ;
     }

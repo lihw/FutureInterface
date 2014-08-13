@@ -48,7 +48,7 @@ pbool PResourceManager::initialize()
     {
         return m_archive->load(m_context->properties()->m_archiveName.c_str());
     }
-
+    
     return true;
 }
 

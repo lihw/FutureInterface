@@ -58,78 +58,39 @@ void PEvent::queue(PObject *receiver, puint32 after)
 
 void PEvent::setParameter(PEventParameterEnum parameterName, pfloat32 value)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     m_parameters[parameterName] = PVariant(value);
 }
 
 void PEvent::setParameter(PEventParameterEnum parameterName, const void* value)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     m_parameters[parameterName] = PVariant(value);
 }
+
 void PEvent::setParameter(PEventParameterEnum parameterName, pint32 value)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     PVariant variant = PVariant(value);
     m_parameters[parameterName] = variant;
 }
+
 void PEvent::setParameter(PEventParameterEnum parameterName, puint32 value)
 {
-     PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     PVariant variant = PVariant(value);
     m_parameters[parameterName] = variant;
 }
+
 void PEvent::setParameter(PEventParameterEnum parameterName, pbool value)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     PVariant dataValue = PVariant(value);
     m_parameters[parameterName] = dataValue;
 }
 
 void PEvent::setParameter(PEventParameterEnum parameterName, void *value)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return ;
-    }
     PVariant dataValue = PVariant(value);
     m_parameters[parameterName] = dataValue;
 }
 
 PVariant& PEvent::parameter(PEventParameterEnum parameterName)
 {
-    PASSERTINFO(parameterName < P_EVENT_PARAMETER_MAX_NUMBER, "too many parameters");
-    if (parameterName >= P_EVENT_PARAMETER_MAX_NUMBER)
-    {
-        PLOG_ERROR("too many parameters");
-        return s_nil;
-    }
     return m_parameters[parameterName];
 }

@@ -107,6 +107,9 @@ void PAbstractEffect::setBlendMode(PEffectBlendModeEnum blendMode)
                      P_EFFECTBLEND_MATERIAL_ADD, true, resourceManager));
                 m_material->retain();
                 break;
+            default:
+                PASSERT_NOTREACHABLE("Unknown effect blending type.");
+                break;
         }
 
         m_blendRect->calibrate(m_material->vertexFormat());
@@ -151,7 +154,6 @@ void PAbstractEffect::render(PRenderState *renderState)
     // read framebuffer contains the content of post processing output.
     writeFrameBuffer()->copyFrameBuffer(renderState); 
 
-    const puint32 *rect = m_scene->context()->rect();
     m_material->parameter("source") = readFrameBuffer()->colorBuffer();
     m_material->parameter("target") = writeFrameBuffer()->colorBuffer();
     m_material->apply(renderState);

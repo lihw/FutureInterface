@@ -29,16 +29,15 @@ public:
 
     // Enable the framebuffer when render.
     void enable();
-    void disable();
     
     P_INLINE const PGlTexture *colorBuffer() const { return m_colorBuffer; }
     P_INLINE const PGlRenderbuffer *depthBuffer() const { return m_depthBuffer; }
     P_INLINE const PGlRenderbuffer *stencilBuffer() const { return m_stencilBuffer; }
 
     static void clearFramebuffer(pbool color, pbool depth, pbool stencil);
+    static PGlFramebuffer *createDefaultFramebuffer();
 
 private:
-    puint32 getDefaultFramebufferHandle() const;
     pbool checkFramebufferStatus();
 
 private:
@@ -46,10 +45,7 @@ private:
     PGlRenderbuffer *m_depthBuffer;
     PGlRenderbuffer *m_stencilBuffer;
     puint32          m_framebuffer;
-
-#if defined P_DEBUG 
-    pbool            m_enabled;
-#endif
+    static puint32   m_defaultFramebuffer;
 };
 
 #endif // !PGLFRAMEBUFFER_H

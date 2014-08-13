@@ -158,7 +158,7 @@ public:
     { PMatrix3x3 out; pQuaternionGetMatrix3x3(m_q, out.m_m); return out; }
 
     P_INLINE const PQuaternion &operator=(const PMatrix4x4 &matrix)
-    { pQuaternionFromMatrix4x4(matrix.m_m, m_q); }
+    { pQuaternionFromMatrix4x4(matrix.m_m, m_q); return *this; }
 };
 
 

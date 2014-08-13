@@ -95,7 +95,7 @@ pbool P_APIENTRY pAssetIsValid(PAsset *asset)
 pint32 P_APIENTRY pAssetRead(PAsset *asset, void *buffer, puint32 count)
 {
     PASSERT(asset != P_NULL);
-    if (asset != P_NULL)
+    if (asset != P_NULL && asset->pHandle != P_NULL)
     {
         return AAsset_read((AAsset*)(asset->pHandle), buffer, count);  
     }
@@ -106,9 +106,9 @@ pint32 P_APIENTRY pAssetRead(PAsset *asset, void *buffer, puint32 count)
 pint32 P_APIENTRY pAssetSeek(PAsset *asset, pint32 offset, PFileOriginEnum whence)
 {
     PASSERT(asset != P_NULL);
-    if (asset != P_NULL)
+    if (asset != P_NULL && asset->pHandle != P_NULL)
     {
-        return AAsset_seek((AAsset*)(asset->pHandle), offset, whence);     
+        return AAsset_seek((AAsset*)(asset->pHandle), offset, where);     
     }
 
     return 0;
@@ -117,7 +117,7 @@ pint32 P_APIENTRY pAssetSeek(PAsset *asset, pint32 offset, PFileOriginEnum whenc
 pint32 P_APIENTRY pAssetgetRemainingLength(PAsset *asset)
 {
     PASSERT(asset != P_NULL);
-    if (asset != P_NULL)
+    if (asset != P_NULL && asset->pHandle != P_NULL)
     {
         return AAsset_getRemainingLength((AAsset*)(asset->pHandle));     
     }

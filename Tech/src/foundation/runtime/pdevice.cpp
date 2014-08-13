@@ -63,7 +63,6 @@ void PDevice::update()
                     // Get the native event 
                     PInputEventKey* keyEvent = event->getKeyEvent();
                     // Translate it into PEvent and queue the PEvent.
-                    pint32 a = keyEvent->getKeyPressState();
                     PEventTypeEnum eventType = 
                         (PEventTypeEnum)(P_EVENT__KEYDOWN + (keyEvent->getKeyPressState() - P_KEY_DEVICE_STATE_DOWN));
                     PEvent* event = m_context->eventManager()->createEvent(eventType, P_NULL);

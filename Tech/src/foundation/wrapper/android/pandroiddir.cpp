@@ -1,5 +1,5 @@
-// kandroidir.cpp
-// List the content of the directory on win32.
+// pandroidir.cpp
+// List the content of the directory on android
 // 
 // Copyright 2012 - 2014 by Future Interface. 
 // This software is licensed under the terms of the MIT license.

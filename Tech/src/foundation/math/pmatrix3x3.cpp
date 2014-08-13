@@ -413,12 +413,12 @@ pfloat32 * P_APIENTRY pMatrix3x3InverseTransposeMatrix4x4(const pfloat32 *in, pf
     pfloat32 subFactor10 = in[4]  * in[14] - in[12] * in[6];
     pfloat32 subFactor11 = in[5]  * in[15] - in[13] * in[7];
     pfloat32 subFactor12 = in[4]  * in[13] - in[12] * in[5];
-    pfloat32 subFactor13 = in[6]  * in[11] - in[10] * in[7];
-    pfloat32 subFactor14 = in[5]  * in[11] - in[9]  * in[7];
-    pfloat32 subFactor15 = in[5]  * in[10] - in[9]  * in[6];
-    pfloat32 subFactor16 = in[4]  * in[11] - in[8]  * in[7];
-    pfloat32 subFactor17 = in[4]  * in[10] - in[8]  * in[6];
-    pfloat32 subFactor18 = in[4]  * in[9]  - in[8]  * in[5];
+    //pfloat32 subFactor13 = in[6]  * in[11] - in[10] * in[7];
+    //pfloat32 subFactor14 = in[5]  * in[11] - in[9]  * in[7];
+    //pfloat32 subFactor15 = in[5]  * in[10] - in[9]  * in[6];
+    //pfloat32 subFactor16 = in[4]  * in[11] - in[8]  * in[7];
+    //pfloat32 subFactor17 = in[4]  * in[10] - in[8]  * in[6];
+    //pfloat32 subFactor18 = in[4]  * in[9]  - in[8]  * in[5];
 
     out[0] = + (in[5] * subFactor00 - in[6] * subFactor01 + in[7] * subFactor02);
     out[1] = - (in[4] * subFactor00 - in[6] * subFactor03 + in[7] * subFactor04);

@@ -12,7 +12,6 @@
 #include <Paper3D/prenderstate.h>
 
 #include <PFoundation/pstring.h>
-
 #include <PFoundation/pglframebuffer.h>
 #include <PFoundation/pnew.h>
 #include <PFoundation/passert.h>
@@ -42,7 +41,7 @@ PFrameBuffer::PFrameBuffer(puint32 width,
         m_available = true;
     }
 }
-
+    
 PFrameBuffer::~PFrameBuffer()
 {
     PDELETE(m_framebufferObject);
@@ -113,4 +112,18 @@ void PFrameBuffer::copyFrameBuffer(PRenderState *renderState)
 
     m_colorTexture->textureObject()->copyTexture(P_GLTEXTURE_FORMAT_RGBA8888, 
         0, 0, m_width, m_height, 0);
+}
+    
+PFrameBuffer *PFrameBuffer::createDefaultFrameBuffer()
+{
+    PFrameBuffer *ret = PNEW(PFrameBuffer(0xffffffff,
+                                          0xffffffff,
+                                          P_GLTEXTURE_FORMAT_UNKNOWN,
+                                          P_GLTEXTURE_FORMAT_UNKNOWN,
+                                          P_GLTEXTURE_FORMAT_UNKNOWN,
+                                          "default-framebuffer",
+                                          P_NULL));
+    ret->m_available = true;
+    ret->m_framebufferObject = PGlFramebuffer::createDefaultFramebuffer();
+    return ret;
 }

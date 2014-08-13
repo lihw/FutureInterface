@@ -47,7 +47,7 @@ static void pExceptionThrowMessage_internal(JNIEnv* env, const pchar* message)
 
 JNIEXPORT jboolean JNICALL Java_com_fi_tech_PNativeLibrary_initializeLibraryNative(JNIEnv* env, jobject obj, jobject context)
 {
-    pEnvironmentSetContext(context);
+    pEnvironmentInitialize(context);
 
     if (!pGetActivity()->initialize())
     {
@@ -181,7 +181,7 @@ JNIEXPORT void JNICALL Java_com_fi_tech_PContext_uninitializeContextNative(JNIEn
         // Shut down engine if there is no context.
         if (pGetActivity()->getNumberOfContexts() == 0)
         {
-            pEnvironmentClear();
+            pEnvironmentUninitialize();
             pGetActivity()->uninitialize();
         }
     }

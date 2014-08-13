@@ -22,6 +22,9 @@ class PXmlElement;
 class P_DLLEXPORT PEffectUnpacker
 {
 public:
+    PEffectUnpacker() {}
+    virtual ~PEffectUnpacker() {}
+    
     virtual PAbstractEffect *unpack(PXmlElement *xmlElement, PScene *scene) = 0;
 };
 

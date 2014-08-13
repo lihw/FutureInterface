@@ -189,6 +189,8 @@ const PMatrix4x4 & PPropertyProjection::toMatrix4x4() const
             case P_PROJECTION_WINDOW:
                 windowPrivate(m_width.toFloat(), m_height.toFloat());
                 break;
+            default:
+                break;
         }
 
         m_dirty = false;

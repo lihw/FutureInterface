@@ -71,6 +71,8 @@ private:
     PTexture           *m_textures[P_TEXTURE_UNIT_NUMBER];
     puint32             m_numTextures;
 
+    PFrameBuffer       *m_defaultFramebuffer;
+
     // Performance data
     // TODO: 
     //  - enable performance monitoring only after users requests.

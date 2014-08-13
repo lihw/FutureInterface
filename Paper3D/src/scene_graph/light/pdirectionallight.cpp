@@ -55,7 +55,6 @@ void PDirectionalLight::setDirection(const PVector3 &direction)
 
 PVector3 PDirectionalLight::worldDirection() const
 {
-    pbool changed = false;
     PVector3 ret;
 
     pfloat32 normalMatrix[9];

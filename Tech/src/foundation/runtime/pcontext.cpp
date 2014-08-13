@@ -154,7 +154,7 @@ void PContext::pause()
     m_timerManager->pause();
     m_gestureManager->pause();
 
-    for (puint32 i = m_modules.size() - 1; i >= 0; --i)
+    for (pint32 i = (pint32)m_modules.size() - 1; i >= 0; --i)
     {
         m_modules[i]->pause();
     }
@@ -259,6 +259,8 @@ void PContext::updateRect(puint32 screenWidth, puint32 screenHeight)
         case P_WINDOWLAYOUT_RIGHT_TOP:
             m_rect[0] = screenWidth - m_rect[2];
             m_rect[1] = screenHeight - m_rect[3];
+            break;
+        default:
             break;
     }
 }

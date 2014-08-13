@@ -32,9 +32,7 @@ PAnimationLoader::~PAnimationLoader()
 }
 
 bool PAnimationLoader::read(PInputStream *inputStream, PAnimationResource *animation)
-{
-    pint32 state = 0; // 0: decoding, 1: error
-    
+{    
     PASSERT(inputStream != P_NULL);
     if (inputStream == P_NULL)
     {

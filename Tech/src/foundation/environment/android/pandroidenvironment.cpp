@@ -1,5 +1,5 @@
 // pandroidenvironment.cpp
-// Android environment
+// Android environment specifics
 //
 // Copyright 2012 - 2014 by Future Interface. 
 // This software is licensed under the terms of the MIT license.
@@ -17,43 +17,46 @@
 
 jobject         g_pContext = 0;
 AAssetManager  *g_pAssetManager = 0;
-const pchar    *g_pSDCardPath = P_NULL;
-const pchar    *g_pSystemPath = P_NULL;
+
+const pchar    *g_pExternalStoragePath = P_NULL;
+const pchar    *g_pApplicationPath     = P_NULL;
+const pchar    *g_pDocumentPath        = P_NULL;
 
 void P_APIENTRY pEnvironmentSetJavaVM(JavaVM *vm)
 {
     PJniHelper::setJavaVM(vm);
 }
 
-void P_APIENTRY pEnvironmentSetContext(jobject context)
+void P_APIENTRY pEnvironmentInitialize(void *data)
 {
+    jobject context = (jobject)data;
     g_pContext = context;
 
     JNIEnv *env;
     PJniHelper::getEnv(&env);
 
-    // get asset manager.
+    // Get asset manager.
     jclass cls = PJniHelper::getClassID(context);
     jmethodID mid = env->GetMethodID(cls, "getAssets", "()Landroid/content/res/AssetManager;");
     jobject assetManager = env->CallObjectMethod(context, mid);
 
-    // get ndk asset manager.
+    // Get ndk asset manager.
     g_pAssetManager = AAssetManager_fromJava(env, assetManager);
     env->DeleteLocalRef(assetManager);
 
-    // Get system directory path.
-    PDELETEARRAY(g_pSystemPath);
+    // Get application path.
+    PDELETEARRAY(g_pApplicationPath);
     mid = env->GetMethodID(cls, "getPackageName", "()Ljava/lang/String;");
     jstring jstr = (jstring)(env->CallObjectMethod(context, mid));
     PString packageName = PJniHelper::jstring2string(jstr);
     pchar buffer[1024];
     psprintf(buffer, 1024, "/data/data/%s/files", packageName.c_str());
-    g_pSystemPath = pstrdup(buffer);
+    g_pApplicationPath = pstrdup(buffer);
     env->DeleteLocalRef(jstr);
     env->DeleteLocalRef(cls);
 
     // Get sdcard path.
-    PDELETEARRAY(g_pSDCardPath);
+    PDELETEARRAY(g_pExternalStoragePath);
     cls = env->FindClass("android/os/Environment");
     mid = env->GetStaticMethodID(cls, "getExternalStorageState", "()Ljava/lang/String;");
     jstr = (jstring)(env->CallStaticObjectMethod(cls, mid));
@@ -73,22 +76,22 @@ void P_APIENTRY pEnvironmentSetContext(jobject context)
         mid = env->GetMethodID(cls, "getAbsolutePath", "()Ljava/lang/String;");
         jstr = (jstring)(env->CallObjectMethod(file, mid));        
         env->DeleteLocalRef(file);
-        g_pSDCardPath = PJniHelper::jstring2chars(jstr);
+        g_pExternalStoragePath = PJniHelper::jstring2chars(jstr);
         env->DeleteLocalRef(jstr);
     }
     else
     {
-        g_pSDCardPath = P_NULL;
+        g_pExternalStoragePath = P_NULL;
     }
     env->DeleteLocalRef(cls);
 }
 
-void P_APIENTRY pEnvironmentClear()
+void P_APIENTRY pEnvironmentUninitialize()
 {
-    g_pContext = 0;
+    g_pContext      = 0;
     g_pAssetManager = 0;
-    PDELETEARRAY(g_pSDCardPath);
-    PDELETEARRAY(g_pSystemPath);
+    PDELETEARRAY(g_pExternalStoragePath);
+    PDELETEARRAY(g_pApplicationPath);
 
     // Tell java library is uninitialized.
     JNIEnv *env;

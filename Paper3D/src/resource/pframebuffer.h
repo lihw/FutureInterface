@@ -36,6 +36,12 @@ public:
     // Dump the current framebuffer content into this framebuffer.
     void copyFrameBuffer(PRenderState *renderState);
 
+    // Create the default frame buffer. In iOS, the default framebuffer is created by user 
+    // explicityly in the platform layer. It is not 0 as in win32 and android. We have to 
+    // create a corresponding PFrameBuffer object in the paper3d layer to encapsulate this
+    // platform specific implementation.
+    static PFrameBuffer *createDefaultFrameBuffer();
+
 protected:
     virtual void discardResource();
     virtual pbool restoreResource();
@@ -49,7 +55,7 @@ private:
                  const pchar* name, 
                  PResourceManager* resourceManager); 
     virtual ~PFrameBuffer();
-    
+
     pbool createFramebuffer(); 
 
 private:

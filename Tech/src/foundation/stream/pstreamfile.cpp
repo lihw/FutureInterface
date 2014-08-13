@@ -52,6 +52,10 @@ pbool PStreamFile::readLine(puint32 length, puint8* buffer)
     }
 
     pchar* p = pfgets((pchar*)buffer, length, m_file);
+    if (p == P_NULL)
+    {
+        return false;
+    }
 
     return true;
 }

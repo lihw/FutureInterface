@@ -607,12 +607,13 @@ PGlShaderUniform PGlShader::uniformInformation(puint32 index)
     }
 
     // Get the location of this uniform
-    ret.m_location = glGetUniformLocation(m_program, ret.m_name);
-    PASSERT(ret.m_location >= 0);
-    if (ret.m_location < 0)
+    GLint loc = glGetUniformLocation(m_program, ret.m_name);
+    PASSERT(loc >= 0);
+    if (loc < 0)
     {
         PLOG_WARNINGX(P_LOG_CHANNEL_OPENGLEGL, "Unable to find the location of %s", ret.m_name);
     }
+    ret.m_location = loc;
 
     return ret;
 }

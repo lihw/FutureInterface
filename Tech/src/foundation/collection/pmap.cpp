@@ -11,17 +11,4 @@
 
 #if defined P_DEBUG
 
-static void pMapTestCompiling()
-{
-	PMap<pint32, pint32> map;
-	map.insert(1, 1);
-	pint32 ret = map[1];
-
-	PMap<pint32, pint32>::iterator it, ib = map.begin(), ie = map.end();
-	for (it = ib; it != ie; ++it)
-	{
-		pint32 value = it.value();
-	}
-}
-
 #endif // !P_DEBUG

@@ -21,6 +21,9 @@ class PXmlElement;
 class P_DLLEXPORT PNodeUnpacker
 {
 public:
+    PNodeUnpacker() {}
+    virtual ~PNodeUnpacker() {}
+    
     virtual PNode *unpack(PXmlElement *xmlElement, PNode *parent) = 0;
 };
 

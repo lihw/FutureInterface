@@ -25,17 +25,11 @@
 #  include <GLES2/gl2ext.h>
 #endif
 
-
 PGlFramebuffer::PGlFramebuffer()
 {
     m_colorBuffer   = P_NULL;
     m_depthBuffer   = P_NULL;
     m_stencilBuffer = P_NULL;
-
-#if defined P_DEBUG
-    m_enabled       = false;
-#endif
-
     m_framebuffer   = 0;
 }
 
@@ -131,8 +125,6 @@ pbool PGlFramebuffer::create(puint32 width, puint32 height, PGlTextureFormatEnum
         return false;
     }
 
-    glBindFramebuffer(GL_FRAMEBUFFER, getDefaultFramebufferHandle());
-    
     if (!pGlErrorCheckError())
     {
         PDELETE(m_colorBuffer);
@@ -145,12 +137,6 @@ pbool PGlFramebuffer::create(puint32 width, puint32 height, PGlTextureFormatEnum
     return true;
 }
 
-puint32 PGlFramebuffer::getDefaultFramebufferHandle() const
-{
-    // TODO: It seems that IOS's default framebuffer handle is different with others.
-    return 0;
-}
-
 pbool PGlFramebuffer::checkFramebufferStatus()
 {
     puint32 result = glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -159,7 +145,7 @@ pbool PGlFramebuffer::checkFramebufferStatus()
     if (result != GL_FRAMEBUFFER_COMPLETE)
     {
         glDeleteFramebuffers(1, &m_framebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, getDefaultFramebufferHandle());
+        glBindFramebuffer(GL_FRAMEBUFFER, m_defaultFramebuffer);
 
         if (result == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
         {
@@ -182,33 +168,9 @@ pbool PGlFramebuffer::checkFramebufferStatus()
 
 void PGlFramebuffer::enable()
 {
-    PASSERT(!m_enabled);
-#if defined P_DEBUG
-    if (m_enabled)
-    {
-        return ;
-    }
-    m_enabled = true;
-#endif
-
     glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
 }
 
-void PGlFramebuffer::disable()
-{
-    PASSERT(m_enabled);
-#if defined P_DEBUG
-    if (!m_enabled)
-    {
-        return ; 
-    }
-        
-    m_enabled = false;
-#endif
-        
-    glBindFramebuffer(GL_FRAMEBUFFER, getDefaultFramebufferHandle());
-}
-    
 void PGlFramebuffer::clearFramebuffer(pbool color, pbool depth, pbool stencil)
 {
     GLbitfield bits = 0;
@@ -226,4 +188,15 @@ void PGlFramebuffer::clearFramebuffer(pbool color, pbool depth, pbool stencil)
     }
 
     glClear(bits);
+}
+    
+PGlFramebuffer *PGlFramebuffer::createDefaultFramebuffer()
+{
+    GLint fbo;
+    glGetIntegerv(GL_FRAMEBUFFER_BINDING, &fbo);
+    
+    PGlFramebuffer *framebuffer = PNEW(PGlFramebuffer);
+    framebuffer->m_framebuffer = fbo;
+    // FIXME: we don't fill the color, depth and stencil buffer although they may exist.
+    return framebuffer;
 }

@@ -94,7 +94,7 @@ public:
         P_INLINE void increment()
         {
             PASSERTINFO(m_i != P_NULL, "invalid iterator");
-            m_i = m_rbTree.successor(m_i);
+            m_i = m_tree->successor(m_i);
         }
 
         P_INLINE const_iterator &operator++() 

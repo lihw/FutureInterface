@@ -39,6 +39,9 @@ PRenderState::PRenderState(const puint32 *initialViewport)
     m_mesh                      = P_NULL;
     m_numTextures               = 0;
     pmemset(m_textures, 0, sizeof(m_textures));
+
+    m_defaultFramebuffer        = PFrameBuffer::createDefaultFrameBuffer();
+    m_defaultFramebuffer->retain();
 }
 
 PRenderState::~PRenderState()
@@ -84,19 +87,19 @@ void PRenderState::useFrameBuffer(PFrameBuffer* framebuffer)
     // Disable old frame buffer and bind default frame buffer (screen buffer).
     if (m_framebuffer != P_NULL)
     {
-        PGlFramebuffer *framebufferObject = m_framebuffer->framebufferObject();
         m_framebuffer->release();
-        framebufferObject->disable();
     }
 
     m_framebuffer = framebuffer; 
 
-    if (m_framebuffer != P_NULL)
+    if (m_framebuffer == P_NULL)
     {
-        m_framebuffer->retain();
-        PGlFramebuffer *framebufferObject = m_framebuffer->framebufferObject();
-        framebufferObject->enable();
+        m_framebuffer = m_defaultFramebuffer;
     }
+
+    m_framebuffer->retain();
+    PGlFramebuffer *framebufferObject = m_framebuffer->framebufferObject();
+    framebufferObject->enable();
 
     ++m_framebufferSwitchTimes;
 }
@@ -220,9 +223,7 @@ void PRenderState::releaseUsedResources()
             m_textures[i]->release();
         }
     }
-    if (m_framebuffer != P_NULL)
-    {
-        m_framebuffer->release();
-    }
-    
+        
+    m_framebuffer->release();
+    m_defaultFramebuffer->release();
 }

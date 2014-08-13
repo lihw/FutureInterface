@@ -65,12 +65,12 @@ void PStreamAsset::skip(puint32 bytes)
 
 pbool PStreamAsset::isEndOfStream()
 {
-    return (pAssetgetRemainingLength(&m_asset) == 0);
+    return (pAssetGetRemainingLength(&m_asset) == 0);
 }
 
 puint32 PStreamAsset::getPosition()
 {
-    return (puint32)(getSize() - pAssetgetRemainingLength(&m_asset));
+    return (puint32)(getSize() - pAssetGetRemainingLength(&m_asset));
 }
 
 puint32 PStreamAsset::getSize()
