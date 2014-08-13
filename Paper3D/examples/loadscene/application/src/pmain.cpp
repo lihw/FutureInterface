@@ -27,8 +27,8 @@ void pMain(int argc, char* argv[])
         contextProperties.m_windowWidth = 480;
         contextProperties.m_windowHeight = 800;
         contextProperties.m_multisamples = 2;
-#elif defined P_ANDROID
-		 contextProperties.m_windowWidth = 0xffffffff;
+#else
+        contextProperties.m_windowWidth = 0xffffffff;
         contextProperties.m_windowHeight = 0xffffffff;
 #endif
 

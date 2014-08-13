@@ -50,10 +50,18 @@ puint32 P_CCONV psprintf(pchar* buffer, puint32 size, const pchar* format, ...)
 
 void P_APIENTRY pstrncpy(pchar* dst, const pchar* src, puint32 n)
 {
-    strncpy(dst, src, n);
-    dst[n] = 0;
+    if (n == 0)
+    {
+        return ;
+    }
+    
+    const pchar *ret = strncpy(dst, src, n);
+    // If dst is not terminated with '\0', we manually terminate it.
+    if (ret == &dst[n])
+    {
+        dst[n] = 0;
+    }
 }
-
 
 const pchar* P_APIENTRY pstrstr(const pchar* str1, const pchar *str2)
 {

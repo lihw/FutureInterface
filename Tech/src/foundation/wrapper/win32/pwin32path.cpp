@@ -13,14 +13,22 @@
 
 #include <PFoundation/pcrt.h>
 
-const pchar * P_APIENTRY pPathGetSystemDirectory()
+const pchar * P_APIENTRY pPathGetApplicationDirectory()
 {
-    // return "C:\\Windows";
     // FIXME: as in win32, we only have one context per activity, so it is
     // safe to use a local static variable and return its address.
-    static char full_path[512 + 1];
-    ::GetCurrentDirectoryA(512 + 1, full_path);
-    return full_path;
+    static char fullPath[512 + 1];
+    ::GetCurrentDirectoryA(512 + 1, fullPath);
+    return fullPath;
+}
+
+const pchar * P_APIENTRY pPathGetDocumentDirectory()
+{
+    // FIXME: as in win32, we only have one context per activity, so it is
+    // safe to use a local static variable and return its address.
+    static char fullPath[512 + 1];
+    ::GetCurrentDirectoryA(512 + 1, fullPath);
+    return fullPath;
 }
 
 const pchar * P_APIENTRY pPathGetDelimiter()
@@ -28,7 +36,7 @@ const pchar * P_APIENTRY pPathGetDelimiter()
     return "\\";
 }
 
-P_EXTERN const pchar * P_APIENTRY pPathGetSDCardPath()
+P_EXTERN const pchar * P_APIENTRY pPathGetExternalStoragePath()
 {
     return P_NULL;
 }

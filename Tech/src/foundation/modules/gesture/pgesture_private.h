@@ -12,22 +12,8 @@
 
 #include <PFoundation/pevent.h>
 
-class PGestureManager;
 class PContext;
-class PVelocityTracker;
 
-enum PGestureTypeEnum
-{
-    P_GESTURE_TYPE_TAP,             
-    P_GESTURE_TYPE_LONGPRESS,       
-    P_GESTURE_TYPE_PAN,
-    P_GESTURE_TYPE_PINCH,
-    P_GESTURE_TYPE_FLING,
-
-    P_GESTURE_TYPE_FIRST = P_GESTURE_TYPE_TAP,
-    P_GESTURE_TYPE_LAST = P_GESTURE_TYPE_FLING,
-    P_GESTURE_TYPE_NUMBER = P_GESTURE_TYPE_LAST - P_GESTURE_TYPE_FIRST + 1,
-};
 
 class P_DLLEXPORT PAbstractGesture
 {

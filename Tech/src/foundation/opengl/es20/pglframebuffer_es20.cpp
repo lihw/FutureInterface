@@ -145,7 +145,6 @@ pbool PGlFramebuffer::checkFramebufferStatus()
     if (result != GL_FRAMEBUFFER_COMPLETE)
     {
         glDeleteFramebuffers(1, &m_framebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, m_defaultFramebuffer);
 
         if (result == GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
         {

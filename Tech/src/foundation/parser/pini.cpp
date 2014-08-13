@@ -63,10 +63,8 @@ pbool PIni::load(const pchar *filename)
     const pchar* pathList[] =
     {
         ".",
-        pPathGetSystemDirectory(),
-#if defined P_ANDROID
-        pPathGetSDCardPath(),
-#endif
+        pPathGetApplicationDirectory(),
+        pPathGetExternalStoragePath(),
     };
 
     for (size_t i = 0; i < sizeof(pathList) / sizeof(pathList[0]); ++i)
