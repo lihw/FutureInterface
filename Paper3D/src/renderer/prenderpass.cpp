@@ -16,6 +16,7 @@
 #include <Paper3D/pscene.h>
 
 #include <PFoundation/pcontext.h>
+#include <PFoundation/pglerror.h>
 
 
 PRenderPass::PRenderPass(const pchar *name, PScene *scene)
@@ -87,7 +88,11 @@ void PRenderPass::render(PRenderState *renderState)
     }
 
     m_renderTarget->use(renderState);
+    
+    pGlErrorCheckError();
 
     m_renderQueue->render(m_scene, m_camera, renderState);
+    
+    pGlErrorCheckError();
 }
     

@@ -16,7 +16,8 @@
 #include <PFoundation/passert.h>
 #include <PFoundation/plog.h>
 #include <PFoundation/ptime.h>
-    
+
+
 PResourceObject::PResourceObject(const pchar *id, PResourceManager *parent, PResourceTypeEnum type)
 {
     m_type       = type;
@@ -48,7 +49,10 @@ void PResourceObject::release()
     
     if (m_ref == 0)
     {
-        m_parent->removeResourceObject(m_id);
+        if (m_parent != P_NULL)
+        {
+            m_parent->removeResourceObject(m_id);
+        }
 
         PDELETETHIS(this);
     }

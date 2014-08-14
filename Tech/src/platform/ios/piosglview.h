@@ -27,7 +27,7 @@ class PContext;
     GLuint       _framebuffer;
 }
 
-- (id)initWithFrame:(CGRect)frame TechContext:(PContext *)context;
+- (id)initWithFrame:(CGRect)frame TechContext:(PContext *)pcontext;
 
 @end
 

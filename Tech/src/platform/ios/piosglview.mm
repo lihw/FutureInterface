@@ -22,8 +22,7 @@
 - (void)render:(CADisplayLink*)displayLink {
     
     //_currentRotation += displayLink.duration * 90;
-    
-    pGlErrorCheckError();
+    //NSLog(@"render once");
     
     if (_pcontext != P_NULL &&
         (_pcontext->state() == P_CONTEXT_STATE_RUNNING ||
@@ -33,7 +32,7 @@
         {
             _pcontext->setState(P_CONTEXT_STATE_ERROR);
 
-            NSLog(@"update error in context.");
+            NSLog(@"Context update error.");
         }
     }
     else
@@ -42,17 +41,20 @@
         //TODO: Tell application to quit.
     }
     
+    
+    glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
 
 - (id)initWithFrame:(CGRect)frame
-        TechContext:(PContext *)context
+        TechContext:(PContext *)pcontext
 {
-    _pcontext = context;
+    _pcontext = pcontext;
 
     self = [super initWithFrame:frame];
     //[self setContentScaleFactor:2.0f];
-    if (self) {        
+    if (self)
+    {
         // Setup the layer
         _eaglLayer = (CAEAGLLayer*) self.layer;
         _eaglLayer.opaque = YES;
@@ -62,12 +64,14 @@
         // Setup the GL context.
         EAGLRenderingAPI api = kEAGLRenderingAPIOpenGLES2;
         _context = [[EAGLContext alloc] initWithAPI:api];
-        if (!_context) {
+        if (!_context)
+        {
             NSLog(@"Failed to initialize OpenGLES 2.0 context");
             return nil;
         }
 
-        if (![EAGLContext setCurrentContext:_context]) {
+        if (![EAGLContext setCurrentContext:_context])
+        {
             NSLog(@"Failed to set current OpenGL context");
             return nil;
         }
@@ -76,13 +80,13 @@
         int screenHeight = self.frame.size.height;
     
         // Setup the color and depth buffer.
-        glGenRenderbuffers(1, &_colorRenderBuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);        
-        [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];    
-    
         glGenRenderbuffers(1, &_depthRenderBuffer);
         glBindRenderbuffer(GL_RENDERBUFFER, _depthRenderBuffer);
         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, screenWidth, screenHeight);
+        
+        glGenRenderbuffers(1, &_colorRenderBuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderBuffer);
+        [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
     
         // Setup the default framebuffer object.
         glGenFramebuffers(1, &_framebuffer);
@@ -99,18 +103,15 @@
         }
         else
         {
-            if (!context->onInitialized())
+            if (!_pcontext->onInitialized())
             {
-                context->setState(P_CONTEXT_STATE_ERROR);
+                pcontext->setState(P_CONTEXT_STATE_ERROR);
                 return nil;
             }
         }
-
         // Setup the diplay link.
         CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
         [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-        
-        pGlErrorCheckError();
     }
 
     return self;
