@@ -168,6 +168,7 @@ pbool PGlFramebuffer::checkFramebufferStatus()
 void PGlFramebuffer::enable()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
+    pGlErrorCheckError();
 }
 
 void PGlFramebuffer::clearFramebuffer(pbool color, pbool depth, pbool stencil)
@@ -197,5 +198,6 @@ PGlFramebuffer *PGlFramebuffer::createDefaultFramebuffer()
     PGlFramebuffer *framebuffer = PNEW(PGlFramebuffer);
     framebuffer->m_framebuffer = fbo;
     // FIXME: we don't fill the color, depth and stencil buffer although they may exist.
+    pGlErrorCheckError();
     return framebuffer;
 }

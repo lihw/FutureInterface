@@ -155,7 +155,7 @@
 		EDAEF552199847D000EC8C71 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EDAEF560199847D000EC8C71 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		EDAEF563199847D000EC8C71 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		EDAEF57C199848A400EC8C71 /* libPFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPFoundation.a; path = libfoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDAEF57C199848A400EC8C71 /* libfoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDAF4484199900240094AEE9 /* parchivefile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parchivefile.cpp; sourceTree = "<group>"; };
 		EDAF4485199900240094AEE9 /* parchivefile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parchivefile.h; sourceTree = "<group>"; };
 		EDAF4488199900240094AEE9 /* parray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parray.cpp; sourceTree = "<group>"; };
@@ -425,7 +425,7 @@
 		EDAEF550199847D000EC8C71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EDAEF57C199848A400EC8C71 /* libPFoundation.a */,
+				EDAEF57C199848A400EC8C71 /* libfoundation.a */,
 				ED9C48871999E2DE0083A14B /* libplatform.a */,
 			);
 			name = Products;
@@ -873,7 +873,7 @@
 			);
 			name = foundation;
 			productName = PFoundation;
-			productReference = EDAEF57C199848A400EC8C71 /* libPFoundation.a */;
+			productReference = EDAEF57C199848A400EC8C71 /* libfoundation.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -916,7 +916,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target foundation ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target foundation -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\nxcodebuild -target platform ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target platform -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libfoundation.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libfoundation.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libfoundation.a\"\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libplatform.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libplatform.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libplatform.a\"\n\n# Last touch. copy the static library file to output folder.\nLIBRARY_OUTPUTFOLDER=${SRCROOT}/../../lib/ios/ES20_${CONFIGURATION}\nmkdir -p ${LIBRARY_OUTPUTFOLDER}\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/libfoundation.a\" ${LIBRARY_OUTPUTFOLDER}\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/libplatform.a\" ${LIBRARY_OUTPUTFOLDER}";
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target foundation ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target foundation -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\nxcodebuild -target platform ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos -arch \"arm64 armv7 armv7s\"  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target platform -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libfoundation.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libfoundation.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libfoundation.a\"\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/libplatform.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/libplatform.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/libplatform.a\"\n\n# Last touch. copy the static library file to output folder.\nLIBRARY_OUTPUTFOLDER=${SRCROOT}/../../lib/ios/ES20_${CONFIGURATION}\nmkdir -p ${LIBRARY_OUTPUTFOLDER}\ncp -Rf \"${UNIVERSAL_OUTPUTFOLDER}/libfoundation.a\" ${LIBRARY_OUTPUTFOLDER}\ncp -Rf \"${UNIVERSAL_OUTPUTFOLDER}/libplatform.a\" ${LIBRARY_OUTPUTFOLDER}";
 		};
 /* End PBXShellScriptBuildPhase section */
 

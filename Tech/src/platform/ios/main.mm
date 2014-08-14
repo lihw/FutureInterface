@@ -13,37 +13,32 @@
 #include <PFoundation/pactivity.h>
 #include <PFoundation/pnew.h>
 #include <PFoundation/pcontext.h>
+#include <PFoundation/pglerror.h>
 
 #import "piosglview.h"
 
 @interface PAppDelegate : UIResponder <UIApplicationDelegate> 
 {
-    PIOSGLView *_glView;
+    UIWindow   *_mainWindow;
+    PIOSGLView *_mainView;
     PActivity  *_activity;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet PIOSGLView *glView;
+@property (nonatomic, retain) IBOutlet UIWindow *mainWindow;
+@property (nonatomic, retain) IBOutlet PIOSGLView *mainView;
 @end
 
 P_EXTERN void pMain(int argc, char* argv[]);
 
 @implementation PAppDelegate
-@synthesize glView=_glView;
-@synthesize window=_window;
+@synthesize mainView   = _mainView;
+@synthesize mainWindow = _mainWindow;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     pEnvironmentInitialize(P_NULL);
 
     // TODO: Find a way to convert launchOptions to argc and argv.
-    int argc = [launchOptions count];
-    char *argv[1024];
-    for (int i = 0; i < argc; ++i)
-    {
-        //
-    }
-
     _activity = PNEW(PActivity(0, P_NULL));
     if (!_activity->initialize())
     {
@@ -56,20 +51,22 @@ P_EXTERN void pMain(int argc, char* argv[]);
     PContext *context = _activity->findContext((puint32)0);
     context->setState(P_CONTEXT_STATE_UNINITIALIZED);
     
-    // Override point for customization after application launch.
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];    
-
+    // Create the window and view.
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
 #if __has_feature(objc_arc)
-    self.glView = [[PIOSGLView alloc] initWithFrame:screenBounds TechContext:context];
+    self.mainWindow = [[UIWindow alloc] initWithFrame:screenBounds];
+    self.mainView = [[PIOSGLView alloc] initWithFrame:screenBounds TechContext:context];
 #else
-    self.glView = [[[PIOSGLView alloc] initWithFrame:screenBounds TechContext:context]
+    self.mainWindow = [[UIWindow alloc] initWithFrame:screenBounds] autorelease];
+    self.mainView = [[[PIOSGLView alloc] initWithFrame:screenBounds TechContext:context]
                    autorelease];
 #endif
-    [self.window addSubview:_glView];
     
-    [self.window makeKeyAndVisible];
     
-    pGlErrorCheckError();
+    [self.mainWindow addSubview:_mainView];
+    
+    [self.mainWindow makeKeyAndVisible];
     
     return YES;
 }
@@ -80,6 +77,7 @@ P_EXTERN void pMain(int argc, char* argv[]);
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+    NSLog(@"I am stopped.");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -90,6 +88,8 @@ P_EXTERN void pMain(int argc, char* argv[]);
      */
     PContext *context = _activity->findContext((puint32)0);
     context->pause();
+    
+    NSLog(@"I am paused");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -97,6 +97,7 @@ P_EXTERN void pMain(int argc, char* argv[]);
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+    NSLog(@"I am restarted");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -112,12 +113,15 @@ P_EXTERN void pMain(int argc, char* argv[]);
     }
     else
     {
+        PLOG_DEBUG("The context is resumed");
         context->resume();
     }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    NSLog(@"I am terminated");
+    
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
@@ -131,11 +135,11 @@ P_EXTERN void pMain(int argc, char* argv[]);
 - (void)dealloc
 {
 #if __has_feature(objc_arc)
-    _glView = nil;
-    _window = nil;
+    _mainView = nil;
+    _mainWindow = nil;
 #else
-    [_glView release];
-    [_window release];
+    [_mainView release];
+    [_mainWindow release];
     [super dealloc];
 #endif
 }
@@ -144,7 +148,8 @@ P_EXTERN void pMain(int argc, char* argv[]);
 
 int main(int argc, char* argv[])
 {
-    @autoreleasepool {
+    @autoreleasepool
+    {
         int retVal = UIApplicationMain(argc, argv, nil, @"PAppDelegate");
         return retVal;
     }

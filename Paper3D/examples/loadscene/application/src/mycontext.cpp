@@ -60,3 +60,38 @@ pbool MyContext::onKeyboard(PEvent *event)
     }
     return true;
 }
+
+pbool MyContext::onTouch(PEvent *event)
+{
+    if (event->type() == P_EVENT__TOUCH_DOWN)
+    {
+        PLOG_DEBUG("cursor %d down at (%d, %d)",
+              event->parameter(P_EVENTPARAMETER__TOUCH_CURSOR_ID).toInt(),
+              event->parameter(P_EVENTPARAMETER__TOUCH_X).toInt(),
+              event->parameter(P_EVENTPARAMETER__TOUCH_Y).toInt());
+    }
+    else if (event->type() == P_EVENT__TOUCH_MOVE)
+    {
+        PLOG_DEBUG("cursor %d move at (%d, %d)",
+                   event->parameter(P_EVENTPARAMETER__TOUCH_CURSOR_ID).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_X).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_Y).toInt());
+    }
+    else if (event->type() == P_EVENT__TOUCH_UP)
+    {
+        PLOG_DEBUG("cursor %d up at (%d, %d)",
+                   event->parameter(P_EVENTPARAMETER__TOUCH_CURSOR_ID).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_X).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_Y).toInt());
+    }
+    else if (event->type() == P_EVENT__TOUCH_STATIONARY)
+    {
+        PLOG_DEBUG("cursor %d stationary at (%d, %d)",
+                   event->parameter(P_EVENTPARAMETER__TOUCH_CURSOR_ID).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_X).toInt(),
+                   event->parameter(P_EVENTPARAMETER__TOUCH_Y).toInt());
+    }
+    
+    return true;
+}
+
