@@ -26,7 +26,6 @@ public:
     virtual void onDestroy();
     
     virtual pbool onKeyboard(PEvent *event);
-    virtual pbool onTouch(PEvent *event);
     
 private:
     MyScene *m_scene;

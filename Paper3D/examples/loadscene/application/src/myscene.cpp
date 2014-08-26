@@ -16,8 +16,6 @@
 MyScene::MyScene(PContext *context)
     : PScene("my-scene", context)
 {
-    PASSERT(mainCamera() == P_NULL);
-
     PResourceManager *resMgr = context->module<PResourceManager>("resource-manager");
     
     if (!load("scene.psc"))
@@ -25,8 +23,6 @@ MyScene::MyScene(PContext *context)
         PASSERT(!"Failed to load scene.psc");
         return ;
     }
-    
-    pGlErrorCheckError();
 }
 
 MyScene::~MyScene()
