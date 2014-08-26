@@ -88,8 +88,6 @@ P_EXTERN void pMain(int argc, char* argv[]);
      */
     PContext *context = _activity->findContext((puint32)0);
     context->pause();
-    
-    NSLog(@"I am paused");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -97,7 +95,6 @@ P_EXTERN void pMain(int argc, char* argv[]);
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    NSLog(@"I am restarted");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -108,7 +105,7 @@ P_EXTERN void pMain(int argc, char* argv[]);
     PContext *context = _activity->findContext((puint32)0);
     if (context->state() == P_CONTEXT_STATE_UNINITIALIZED)
     {
-        PLOG_DEBUG("Starting program main loop");
+        PLOG_DEBUG("Starting program main loop.");
         context->setState(P_CONTEXT_STATE_RUNNING);
     }
     else
@@ -120,13 +117,18 @@ P_EXTERN void pMain(int argc, char* argv[]);
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    NSLog(@"I am terminated");
-    
     /*
      Called when the application is about to terminate.
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    PContext *context = _activity->findContext((puint32)0);
+    if (context->state() != P_CONTEXT_STATE_UNINITIALIZED)
+    {
+    	context->onDestroy();
+        PDELETE(context);
+    }
+
     _activity->uninitialize();
     PDELETE(_activity);
     pEnvironmentUninitialize();

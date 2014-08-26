@@ -35,8 +35,8 @@
     }
     else
     {
-        NSLog(@"context is invalid or its state is wrong.");
-        // TODO: Tell application to quit.
+        NSLog(@"Context is invalid or its state is wrong.");
+        // TODO: Render an error message onto the screen.
     }
     
     // FIXME: restore the renderbuffer binding after present?
@@ -72,13 +72,13 @@
         _context = [[EAGLContext alloc] initWithAPI:api];
         if (!_context)
         {
-            NSLog(@"Failed to initialize OpenGLES 2.0 context");
+            NSLog(@"Failed to initialize OpenGLES 2.0 context.");
             return nil;
         }
 
         if (![EAGLContext setCurrentContext:_context])
         {
-            NSLog(@"Failed to set current OpenGL context");
+            NSLog(@"Failed to set current OpenGL context.");
             return nil;
         }
         
@@ -158,8 +158,8 @@
             PInputCursorStateEnum cursorStates[] =
             {
                 P_CURSOR_STATE_DOWN,        // UITouchPhaseBegin
-                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_STATIONARY,  // UITouchPhaseStationary
+                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_UP,          // UITouchPhaseEnded
                 P_CURSOR_STATE_UP,          // UITouchPhaseCanceled,
             };
@@ -200,8 +200,8 @@
             PInputCursorStateEnum cursorStates[] =
             {
                 P_CURSOR_STATE_DOWN,        // UITouchPhaseBegin
-                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_STATIONARY,  // UITouchPhaseStationary
+                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_UP,          // UITouchPhaseEnded
                 P_CURSOR_STATE_UP,          // UITouchPhaseCanceled,
             };
@@ -242,8 +242,8 @@
             PInputCursorStateEnum cursorStates[] =
             {
                 P_CURSOR_STATE_DOWN,        // UITouchPhaseBegin
-                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_STATIONARY,  // UITouchPhaseStationary
+                P_CURSOR_STATE_MOVE,        // UITouchPhaseMoved
                 P_CURSOR_STATE_UP,          // UITouchPhaseEnded
                 P_CURSOR_STATE_UP,          // UITouchPhaseCanceled,
             };
