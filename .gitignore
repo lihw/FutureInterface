@@ -1,7 +1,13 @@
 *.swp
+# Ignore msvc 2012 files
 *.suo
 *.obj
 *.pdb
 *.exe
 *.ilk
+# Ignore OSX intermediate files
 .DS_Store
+# Ignore user-specific XCode files
+*.xcworkspace
+*.pbxuser
+xcuserdata
