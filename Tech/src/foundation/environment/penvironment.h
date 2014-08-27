@@ -17,7 +17,7 @@
 #elif defined P_IOS
 #  include "ios/piosenvironment.h"
 #elif defined P_WIN32
-#  include "ios/pwin32environment.h"
+#  include "win32/pwin32environment.h"
 #else
 #  error "Unsupported platform" 
 #endif

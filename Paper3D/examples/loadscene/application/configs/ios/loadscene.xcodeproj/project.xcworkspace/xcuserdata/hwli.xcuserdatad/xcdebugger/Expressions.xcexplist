@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "pAssetOpen(char const*):piosasset.mm">
+      </ContextState>
+      <ContextState
+         contextName = "-[PIOSGLView initWithFrame:TechContext:]:piosglview.mm">
+      </ContextState>
+      <ContextState
+         contextName = "pstrncpy(char*, char const*, unsigned int):pioscrt.mm">
+      </ContextState>
+      <ContextState
+         contextName = "PArchiveFile::readArchiveHeader(PAsset*):parchivefile.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "pAssetRead(PAsset*, void*, unsigned int):piosasset.mm">
+      </ContextState>
+      <ContextState
+         contextName = "PArchiveFile::load(char const*):parchivefile.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

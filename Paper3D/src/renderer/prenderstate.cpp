@@ -42,6 +42,7 @@ PRenderState::PRenderState(const puint32 *initialViewport)
 
     m_defaultFramebuffer        = PFrameBuffer::createDefaultFrameBuffer();
     m_defaultFramebuffer->retain();
+    useFrameBuffer(m_defaultFramebuffer);
 }
 
 PRenderState::~PRenderState()

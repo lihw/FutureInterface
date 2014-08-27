@@ -46,7 +46,7 @@ pbool PActivity::initialize()
     
     // TODO: enable network module under iOS
 #if !defined P_IOS
-    pInitializeNetwork();
+    //pInitializeNetwork();
 #endif
 
     return true;
@@ -58,7 +58,7 @@ void PActivity::uninitialize()
     
     // TODO: enable network module under iOS
 #if !defined P_IOS
-    pUninitializeNetwork();
+    //pUninitializeNetwork();
 #endif
 
     pUninitializeLogSystem();

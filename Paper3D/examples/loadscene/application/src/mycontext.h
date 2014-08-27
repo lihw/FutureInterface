@@ -26,7 +26,7 @@ public:
     virtual void onDestroy();
     
     virtual pbool onKeyboard(PEvent *event);
-
+    
 private:
     MyScene *m_scene;
 };
