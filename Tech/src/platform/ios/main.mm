@@ -54,6 +54,15 @@ P_EXTERN void pMain(int argc, char* argv[]);
     // Create the window and view.
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     
+<<<<<<< HEAD
+=======
+    float contentScale = 1.0f;
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)])
+    {
+        contentScale = [[UIScreen mainScreen] scale];
+    }
+    
+>>>>>>> bf7878be62d5a65af0edfcb8e0f104897df1388a
 #if __has_feature(objc_arc)
     self.mainWindow = [[UIWindow alloc] initWithFrame:screenBounds];
     self.mainView = [[PIOSGLView alloc] initWithFrame:screenBounds TechContext:context];
@@ -63,9 +72,14 @@ P_EXTERN void pMain(int argc, char* argv[]);
                    autorelease];
 #endif
     
+<<<<<<< HEAD
     
     [self.mainWindow addSubview:_mainView];
     
+=======
+    [self.mainWindow addSubview:_mainView];
+    
+>>>>>>> bf7878be62d5a65af0edfcb8e0f104897df1388a
     [self.mainWindow makeKeyAndVisible];
     
     return YES;
