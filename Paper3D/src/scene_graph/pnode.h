@@ -17,6 +17,7 @@
 #include <PFoundation/ppropertytransform.h>
 #include <PFoundation/pstringmap.h>
 #include <PFoundation/plist.h>
+#include <PFoundation/pbox.h>
 
 class PScene;
 
@@ -99,6 +100,7 @@ protected:
     virtual void pause();
     virtual void resume();
     virtual void updateWorldTransform();
+    virtual void updateBBox();
 
 private:
     void addChild(PNode *child);
@@ -113,6 +115,7 @@ protected:
     PPropertyTransform    m_localTransform; // loal transformation
     PScene               *m_scene;          // The scene the drawable belongs to
     pbool                 m_worldTransformChanged; // If the world transform changed in the current frame.
+    PBox                  m_bbox;
 };
 
 #endif // !PNODE_H

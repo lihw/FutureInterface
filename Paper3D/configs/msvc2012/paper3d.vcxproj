@@ -34,6 +34,7 @@
     <ClCompile Include="..\..\src\renderer\prenderstate.cpp" />
     <ClCompile Include="..\..\src\renderer\prendertarget.cpp" />
     <ClCompile Include="..\..\src\renderer\prendertransform.cpp" />
+    <ClCompile Include="..\..\src\renderer\pshadowpass.cpp" />
     <ClCompile Include="..\..\src\renderer\queue\prenderdrawablequeue.cpp" />
     <ClCompile Include="..\..\src\renderer\queue\prenderlightqueue.cpp" />
     <ClCompile Include="..\..\src\renderer\queue\prenderqueue.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="..\..\src\renderer\prenderstate.h" />
     <ClInclude Include="..\..\src\renderer\prendertarget.h" />
     <ClInclude Include="..\..\src\renderer\prendertransform.h" />
+    <ClInclude Include="..\..\src\renderer\pshadowpass.h" />
     <ClInclude Include="..\..\src\renderer\queue\prenderdrawablequeue.h" />
     <ClInclude Include="..\..\src\renderer\queue\prenderlightqueue.h" />
     <ClInclude Include="..\..\src\renderer\queue\prenderqueue.h" />

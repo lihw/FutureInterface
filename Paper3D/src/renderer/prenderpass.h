@@ -29,23 +29,26 @@ public:
     PRenderPass(const pchar *name, PScene *scene);
     virtual ~PRenderPass();
 
-    P_INLINE PRenderTarget *target() const   { return m_renderTarget; }
-    P_INLINE PCamera *camera() const         { return m_camera; }
-    P_INLINE PRenderQueue *queue() const     { return m_renderQueue; }
-    P_INLINE const PString &name() const     { return m_name; }
+    P_INLINE PRenderTarget *target() const       { return m_renderTarget; }
+    P_INLINE PCamera *camera() const             { return m_camera; }
+    P_INLINE PRenderQueue *queue() const         { return m_renderQueue; }
+    P_INLINE const PString &name() const         { return m_name; }
+    P_INLINE PMaterial *overrideMaterial() const { return m_overridedMaterial; }
     
-    void render(PRenderState *renderState);
+    virtual void render(PRenderState *renderState);
     
+    void setOverridedMaterial(PMaterial *material);
     void setCamera(PCamera *camera);
     void setRenderTarget(PRenderTarget *renderTarget);
     void setRenderQueue(PRenderQueue *renderQueue);
 
-private:
+protected:
     PRenderTarget    *m_renderTarget;
     PRenderQueue     *m_renderQueue;
     PCamera          *m_camera;
     PScene           *m_scene;
     PString           m_name;
+    PMaterial        *m_overridedMaterial;
 };
 
 

@@ -29,7 +29,7 @@ public:
     
     void setDirection(pfloat32 x, pfloat32 y, pfloat32 z);
     void setDirection(const PVector3 &direction);
-    void setCastShadow(const pbool &yes);
+    void setCastShadow(pbool castShadow);
 
     P_INLINE PVector3 direction() const { return m_direction.toVector3(); }
     P_INLINE pbool castShadow() const   { return m_castShadow.toBool(); }

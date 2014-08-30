@@ -10,10 +10,12 @@
 #include "pcamera.h"
 
 #include <Paper3D/pscene.h>
+#include <Paper3D/pdirectionallight.h>
 
 #include <PFoundation/pcontext.h>
 #include <PFoundation/pmatrix4x4.h>
 #include <PFoundation/pvector3.h>
+#include <PFoundation/pbox.h>
 #include <PFoundation/pxmlelement.h>
 #include <PFoundation/pconststring.h>
 #include <PFoundation/passert.h>
@@ -257,4 +259,52 @@ pbool PCamera::unpack(const PXmlElement* xmlElement)
     }
 
     return false;
+}
+
+void PCamera::fromLight(const PDirectionalLight *light, const PBox *bbox)
+{
+    PVector3 center = pVector3(0, 0, 0);
+    PVector3 eye = light->direction() * 100.0f; // any point on the light ray is OK.
+    PVector3 up;
+    PVector3 lightSource = pVector3(-light->direction()[0],
+                                    -light->direction()[1],
+                                    -light->direction()[2]);
+    if (lightSource[1] >= 0)
+    {
+        if (lightSource[1] < 0.99f)
+        {
+            up = pVector3(0, 1, 0);
+        }
+        else
+        {
+            up = pVector3(-1.0f, 0.0f, 0.0f);
+        }
+    }
+    else
+    {
+        if (lightSource[1] > -0.99f)
+        {
+            up = pVector3(0, -1, 0);
+        }
+        else
+        {
+            up = pVector3(-1.0f, 0.0f, 0.0f);
+        }
+    }
+
+    up.normalize();
+
+    // Generate the camera matrix
+    m_localTransform.setLookAt(eye[0], eye[1], eye[2], center[0], center[1], center[2], up[0], up[1], up[2]);
+
+    PBox bboxInCameraSpace(*bbox);
+    bboxInCameraSpace.transform(cameraTransform());
+
+    // Generate the projection matrix
+    m_projection.orthogonal(bboxInCameraSpace.min()[0],
+                            bboxInCameraSpace.max()[0],
+                            bboxInCameraSpace.min()[1],
+                            bboxInCameraSpace.max()[1],
+                            bboxInCameraSpace.min()[2] - 0.01f,
+                            bboxInCameraSpace.max()[2] + 0.01f);
 }

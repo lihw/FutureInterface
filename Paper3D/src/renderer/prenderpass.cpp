@@ -14,9 +14,9 @@
 #include <Paper3D/prendertarget.h>
 #include <Paper3D/prenderqueue.h>
 #include <Paper3D/pscene.h>
+#include <Paper3D/pmaterial.h>
 
 #include <PFoundation/pcontext.h>
-#include <PFoundation/pglerror.h>
 
 
 PRenderPass::PRenderPass(const pchar *name, PScene *scene)
@@ -24,10 +24,11 @@ PRenderPass::PRenderPass(const pchar *name, PScene *scene)
     , m_name(name)
 {
     PASSERT(scene != P_NULL);
-    m_scene        = scene;
-    m_camera       = P_NULL;
-    m_renderTarget = P_NULL;
-    m_renderQueue  = P_NULL;
+    m_scene             = scene;
+    m_camera            = P_NULL;
+    m_renderTarget      = P_NULL;
+    m_renderQueue       = P_NULL;
+    m_overridedMaterial = P_NULL;
     
     PRenderTarget *renderTarget = PNEW(PRenderTarget);
 
@@ -46,6 +47,10 @@ PRenderPass::~PRenderPass()
 {
     PDELETE(m_renderQueue);
     PDELETE(m_renderTarget);
+    if (m_overridedMaterial != P_NULL)
+    {
+        m_overridedMaterial->release();
+    }
 }
 
 void PRenderPass::setCamera(PCamera *camera)
@@ -77,6 +82,19 @@ void PRenderPass::setRenderQueue(PRenderQueue *renderQueue)
     }
 }
 
+void PRenderPass::setOverridedMaterial(PMaterial *material)
+{
+    if (m_overridedMaterial != P_NULL)
+    {
+        m_overridedMaterial->release();
+    }
+    m_overridedMaterial = material;
+    if (m_overridedMaterial != P_NULL)
+    {
+        m_overridedMaterial->retain();
+    }
+}
+
 void PRenderPass::render(PRenderState *renderState)
 {
     PASSERT(renderState != P_NULL);
@@ -89,10 +107,6 @@ void PRenderPass::render(PRenderState *renderState)
 
     m_renderTarget->use(renderState);
     
-    pGlErrorCheckError();
-
     m_renderQueue->render(m_scene, m_camera, renderState);
-    
-    pGlErrorCheckError();
 }
     

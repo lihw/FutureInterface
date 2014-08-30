@@ -210,6 +210,9 @@
     <ClCompile Include="..\..\src\scene_graph\drawable\psprite2d.cpp">
       <Filter>scene_graph\drawable</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\renderer\pshadowpass.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\animation\panimationinstance.h">
@@ -385,6 +388,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\scene_graph\drawable\psprite2d.h">
       <Filter>scene_graph\drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\renderer\pshadowpass.h">
+      <Filter>render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

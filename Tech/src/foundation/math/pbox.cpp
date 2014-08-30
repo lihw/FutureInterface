@@ -10,6 +10,7 @@
 #include "pbox.h"
 
 #include <PFoundation/passert.h>
+#include <PFoundation/pmatrix4x4.h>
 
 
 PBox::PBox()
@@ -34,6 +35,17 @@ PBox::PBox(const pfloat32 *min, const pfloat32 *max)
 
 PBox::~PBox()
 {
+}
+
+PBox::PBox(const PBox &other)
+{
+    m_min[0] = other.m_min[0];
+    m_min[1] = other.m_min[1];
+    m_min[2] = other.m_min[2];
+
+    m_max[0] = other.m_max[0];
+    m_max[1] = other.m_max[1];
+    m_max[2] = other.m_max[2];
 }
 
 PBox PBox::operator+(const PBox &other) const
@@ -92,4 +104,19 @@ const PBox &PBox::operator^=(const PBox &other)
     m_max[2] = pMax(pMax(m_max[2], other.m_max[2]), m_max[2]);
 
     return *this;
+}
+
+void PBox::transform(const PMatrix4x4 &transform)
+{
+    pfloat32 tmp[3];
+
+    pMatrix4x4MultiplyVector3(transform.m_m, m_min, tmp);
+    m_min[0] = tmp[0];
+    m_min[1] = tmp[1];
+    m_min[2] = tmp[2];
+
+    pMatrix4x4MultiplyVector3(transform.m_m, m_max, tmp);
+    m_max[0] = tmp[0];
+    m_max[1] = tmp[1];
+    m_max[2] = tmp[2];
 }
