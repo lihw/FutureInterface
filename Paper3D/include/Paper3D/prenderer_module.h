@@ -14,6 +14,7 @@
 #include "../../src/renderer/queue/prenderdrawablequeue.h"
 #include "../../src/renderer/queue/prenderqueue.h"
 #include "../../src/renderer/prenderpass.h"
+#include "../../src/renderer/pshadowpass.h"
 #include "../../src/renderer/prendertarget.h"
 #include "../../src/renderer/prenderstate.h"
 #include "../../src/renderer/prendertransform.h"

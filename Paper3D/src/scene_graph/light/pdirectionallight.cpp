@@ -53,6 +53,11 @@ void PDirectionalLight::setDirection(const PVector3 &direction)
     m_direction = d;
 }
 
+void PDirectionalLight::setCastShadow(pbool castShadow)
+{
+    m_castShadow = castShadow;
+}
+
 PVector3 PDirectionalLight::worldDirection() const
 {
     PVector3 ret;

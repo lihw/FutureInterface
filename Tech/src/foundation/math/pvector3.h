@@ -250,12 +250,12 @@ struct P_DLLEXPORT PVector3
     P_INLINE pbool operator==(const PVector3 &other) const
     { return pVector3IsEqual(m_v, other.m_v); }
 
+#if defined P_DEBUG
     P_INLINE void print() const
     {
-    #if defined P_DEBUG
         pVector3Print(m_v); 
-    #endif
     }
+#endif
 
     pfloat32  m_v[3];
 };

@@ -40,9 +40,10 @@ PScene::PScene(const pchar *name, PContext *context)
 {
     P_OBJECT_INITIALIZE_PROPERTY(PObject);
     
-    m_root       = PNEW(PRootNode(name, this));
-    m_mainCamera = P_NULL;
-    m_renderer   = PNEW(PRenderer(this));
+    m_root          = PNEW(PRootNode(name, this));
+    m_mainCamera    = P_NULL;
+    m_renderer      = PNEW(PRenderer(this));
+    m_shadowQuality = SHADOWQUALITY_DEFAULT;
 }
 
 PScene::~PScene()
@@ -126,7 +127,9 @@ void PScene::render(PRenderState *renderState)
 	{
 		// Update the transformation of each node.
 		node->updateWorldTransform();
-		// Call update of each node.
+        // Update the bounding box in the world space.
+        node->updateBBox();
+		// Call customized update routing of each node.
 		node->update();
 
 		node = *(++ni);
@@ -159,6 +162,11 @@ void PScene::setMainCamera(PCamera *camera)
 void PScene::setName(const pchar *name)
 {
     m_root->setName(name);
+}
+
+void PScene::setShadowQuality(ShadowQualityEnum shadowQuality)
+{
+    m_shadowQuality = shadowQuality;
 }
 
 void PScene::onResized(pfloat32 x, pfloat32 y, pfloat32 width, pfloat32 height)

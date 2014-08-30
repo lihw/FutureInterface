@@ -78,14 +78,19 @@ PDrawable::~PDrawable()
     }
 }
 
-void PDrawable::setVisible(bool visible)
+void PDrawable::setVisible(pbool visible)
 {
     m_visible = visible;
 }
 
-void PDrawable::setPickable(bool pickable)
+void PDrawable::setPickable(pbool pickable)
 {
     m_pickable = pickable;
+}
+
+void PDrawable::setCastShadow(pbool castShadow)
+{
+    m_castShadow = castShadow;
 }
 
 void PDrawable::resume()

@@ -20,7 +20,8 @@
 // TODO: free camera, camera mesh and thir-person view camera for debugging.
 
 class PScene;
-class PCameraMisc;
+class PBox;
+class PDirectionalLight;
 
 
 class P_DLLEXPORT PCamera : public PNode
@@ -57,6 +58,9 @@ public:
     // Construct this camera to be an oblique one to certain plane.
     // FIXME: buggy! See reflection example.
     void oblique(const PPlane &plane);
+    // Construct the camera a directional light, used in shadowmap generation.
+    // bbox is the bounding box of the scene.
+    void fromLight(const PDirectionalLight *light, const PBox *bbox);
     
     virtual pbool unpack(const PXmlElement* xmlElement);
 

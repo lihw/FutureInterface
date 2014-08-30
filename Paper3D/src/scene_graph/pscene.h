@@ -22,6 +22,7 @@
 #include <PFoundation/ppropertystring.h>
 #include <PFoundation/ppropertytransform.h>
 #include <PFoundation/pcolorrgba.h>
+#include <PFoundation/pbox.h>
 
 
 class PContext;
@@ -42,17 +43,30 @@ class P_DLLEXPORT PScene : public PObject
     void operator=(const PScene &other) {}
 
 public:
+    enum ShadowQualityEnum 
+    {
+        SHADOWQUALITY_HIGH,
+        SHADOWQUALITY_NORMAL,
+        SHADOWQUALITY_LOW,
+
+        SHADOWQUALITY_DEFAULT = SHADOWQUALITY_NORMAL,
+    };
+public:
     PScene(const pchar *name, PContext *context);
     virtual ~PScene();
 
     P_INLINE PNode *root() const  { return m_root; }
     P_INLINE PContext *context() const  { return m_context; }
     P_INLINE PCamera *mainCamera() const { return m_mainCamera; }
-    P_INLINE PRenderer* renderer() const { return m_renderer; }
+    P_INLINE PRenderer *renderer() const { return m_renderer; }
+    P_INLINE ShadowQualityEnum shadowQuality() const { return m_shadowQuality; }
+    P_INLINE const PBox *bbox() const { return &m_bbox; }
 
     void setMainCamera(PCamera *camera);
     void setName(const pchar *name);
     void setBackgroundColor(const PColorRGBA &color);
+    // FIXME: only works before the first frame is drawn.
+    void setShadowQuality(ShadowQualityEnum quality);
 
     const PColorRGBA &backgroundColor() const;
 
@@ -82,6 +96,8 @@ protected:
     PRenderer               *m_renderer;
     PCamera                 *m_mainCamera;
     PList<PAbstractEffect *> m_effects;
+    ShadowQualityEnum        m_shadowQuality;
+    PBox                     m_bbox; 
 };
 
 #endif // !PSCENE_H

@@ -18,6 +18,7 @@
 #include <Paper3D/prendertarget.h>
 #include <Paper3D/prenderqueue.h>
 #include <Paper3D/pscene.h>
+#include <Paper3D/pshadowpass.h>
 
 #include <PFoundation/passert.h>
 #include <PFoundation/pcontext.h>
@@ -44,12 +45,15 @@ void PRenderer::render(PRenderState *renderState)
     // Create a default render pass if none exists
     if (m_renderPassArray.isEmpty())
     {
-        PRenderPass *pass = PNEW(PRenderPass("default", m_scene));
-        pass->setCamera(m_scene->mainCamera());
-        pass->queue()->addNodes(m_scene->root());
-        pass->target()->setColorClearValue(m_backgroundColor);
+        PRenderPass *renderPass = PNEW(PRenderPass("default", m_scene));
+        renderPass->setCamera(m_scene->mainCamera());
+        renderPass->queue()->addNodes(m_scene->root());
+        renderPass->target()->setColorClearValue(m_backgroundColor);
+
+        PShadowPass *shadowPass = PNEW(PShadowPass("shadow", m_scene));
         
-        addRenderPass(pass);
+        addRenderPass(shadowPass);
+        addRenderPass(renderPass);
     }
 
     if (m_renderPassArray.isEmpty())

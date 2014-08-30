@@ -218,3 +218,8 @@ void PNode::updateWorldTransform()
     }
 }
     
+    
+void PNode::updateBBox()
+{
+    // TODO:
+}
