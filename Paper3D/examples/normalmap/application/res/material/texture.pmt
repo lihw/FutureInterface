@@ -17,6 +17,8 @@
   </parameters>
   <shader>
     <vs>
+      precision mediump float;
+
       attribute mediump vec4 position;
       attribute mediump vec3 normal;
       attribute mediump vec4 texcoord0;
@@ -41,7 +43,6 @@
 
       uniform DirectionalLightStruct DirectionalLight;
       uniform vec3 CameraPosition;
-      
 
       void main()
       {
