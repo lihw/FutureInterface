@@ -40,6 +40,8 @@ MyScene::MyScene(PContext *context)
     camera->transform().setLookAt(0.0f, 1.9f, 80.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
     camera->projection().perspective(45.0f, (pfloat32)rect[2] / (pfloat32)rect[3], 0.1f, 100.0f);
     setMainCamera(camera);
+
+    m_rotating = false;
 }
 
 
@@ -49,7 +51,18 @@ MyScene::~MyScene()
 
 void MyScene::update()
 {
-    
+    if (!m_rotating)
+    {
+ 	    PVector3 r = m_drawable->transform().rotation();
+	    r[0] -= 0.01f;
+        r[1] -= 0.005f;
+	    m_drawable->transform().setRotation(r);   
+    }
+}
+
+void MyScene::setRotating(pbool rotating)
+{
+    m_rotating = rotating;
 }
 
 void MyScene::rotate(const PMatrix3x3 &matrix)

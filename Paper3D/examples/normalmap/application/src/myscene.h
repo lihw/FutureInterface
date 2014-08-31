@@ -26,6 +26,7 @@ public:
 
     virtual void update();
     void rotate(const PMatrix3x3 &matrix);
+    void setRotating(pbool rotating);
 
 private:
     PDrawable           *m_drawable;
@@ -34,6 +35,8 @@ private:
     PFrameBuffer        *m_framebuffer;
     PRenderPass         *m_mainPass;
     PRenderPass         *m_shadowPass;
+
+    pbool                m_rotating;
 };
 
 #endif

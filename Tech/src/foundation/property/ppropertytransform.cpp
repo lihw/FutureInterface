@@ -410,6 +410,7 @@ void PPropertyTransform::setMatrix4x4(const pfloat32 *matrix)
     matrixRT[9]  /= sz;
     matrixRT[10] /= sz;
 
+    // FIXME: matrix->rotation->matrix is buggy. Please verify.
     pfloat32 rx;
     pfloat32 ry;
     pfloat32 rz;

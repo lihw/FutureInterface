@@ -65,6 +65,8 @@ pbool MyContext::onTouch(PEvent *event)
     if (event->getType() == P_EVENT__TOUCH_DOWN)
     {
         m_arcball.restart();
+
+        m_scene->setRotating(true);
     }
     else if (event->getType() == P_EVENT__TOUCH_MOVE)
     {
@@ -76,6 +78,10 @@ pbool MyContext::onTouch(PEvent *event)
         m_arcball.updateMouse(xx, yy);
 
         m_scene->rotate(m_arcball.getRotationMatrix());
+    }
+    else if (event->getType() == P_EVENT__TOUCH_UP)
+    {
+        m_scene->setRotating(false);
     }
 
     return true;
